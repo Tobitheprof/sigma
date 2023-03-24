@@ -1,94 +1,7 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home</title>
-    <link rel="stylesheet" href="assets/vendor/bootstrap/css/bootstrap.css">
-    <link rel="stylesheet" href="assets/vendor/animate.css/animate.css">
-    <link rel="stylesheet" href="assets/vendor/bootstrap-icons-1.10.3/bootstrap-icons.css">
-    <link rel="stylesheet" href="assets/vendor/aos/aos.css">
-    <link rel="stylesheet" href="assets/css/styles.css">
-    <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800,900" rel="stylesheet">
-</head>
-<body>
-    <!--Nav Bar Start-->
-    <nav class="navbar navbar-expand-md navbar-light shadow sticky-top">
-        <div class="container-xl">
-            <a href="#" class="navbar-brand">
-                <img src="assets/img/logo.png" alt="" class="img-fluid" width="50" height="70"> <span>SIGMA</span>
-            </a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#sidebar" aria-controls="offcanvasExample">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse justify-content-end align-center" id="#">
-                <ul class="navbar-nav">
-                    <li class="nav-item">
-                        <a href="#" class="nav-link active">Home</a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="#about" class="nav-link">About</a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="#" class="nav-link">Login</a>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </nav>
-    <!--Nav End-->
-
-    <!--Offcanvas Start (NavBar) --> 
-    <div class="offcanvas offcanvas-start" tabindex="-1" id="sidebar" aria-labelledby="sidebar-label">
-        <div class="offcanvas-header">
-            <h5 class="offcanvas-title" id="sidebar-label"><span><img src="assets/img/logo.png" alt="" width="50" height="50">Sigma</span></h5>
-            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#sidebar" aria-label="Close"></button>
-        </div>
-        <div class="border-bottom fw-bold"></div>
-
-        <div class="offcanvas-body">
-            <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
-                <li class="nav-item">
-                  <a class="nav-link active" aria-current="page" href="#">Home</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="#">Blog</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Login</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Register</a>
-                </li>
-                <li class="nav-item">
-                    <a href="#" class="nav-link btn btn-custom custom-text rounded p-2">Get Started</a>
-                </li>
-                <!-- <li class="nav-item dropdown">
-                  <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                    Dropdown
-                  </a>
-                  <ul class="dropdown-menu">
-                    <li><a class="dropdown-item" href="#">Action</a></li>
-                    <li><a class="dropdown-item" href="#">Another action</a></li>
-                    <li>
-                      <hr class="dropdown-divider">
-                    </li>
-                    <li><a class="dropdown-item" href="#">Something else here</a></li>
-                  </ul>
-                </li> -->
-              </ul>
-        </div>
-        
-        <div class="offcanvas-footer">
-            <a href="#" style="text-decoration: none; color: black;"><p class="lead ms-3"><i class="bi bi-box-arrow-left me-2"></i><span style="color: red;">Logout</span></p></a>
-        </div>
-
-    </div>
-    <!--Offcanvas End-->
-
-
-    <!--Hero Section-->
+  {% extends 'base.html' %}
+  {% load static %}
+  {% block content %}
+  <!--Hero Section-->
     <section id="intro">
         <div class="container-lg">
             <div class="row justify-content-center align-items-center">
@@ -100,7 +13,7 @@
                 </div>
                 <div class="col-md-8 d-none d-md-block text-center animate__animated animate__fadeInRight">
                     <span class="goat" data-bs-placement="bottom" title="Tobi is tha GOAT">
-                        <img src="assets/img/12557511_4997671-removebg.png" alt="coffee bag" class="img-fluid">
+                        <img src="{% static 'assets/img/12557511_4997671-removebg.png' %}" alt="coffee bag" class="img-fluid">
                     </span>
                 </div>
             </div>
@@ -123,7 +36,7 @@
                     </div>
                 </div>
                 <div class="col-md-5 order-md-1 animate__animated animate__fadeInDown">
-                    <img src="assets/img/7069376_3304458.jpg" alt="image" class="img-fluid" width="500" height="500">
+                    <img src="{% static 'assets/img/7069376_3304458.jpg' %}" alt="image" class="img-fluid" width="500" height="500">
                 </div>
             </div>
             <!--Marketing Item End-->
@@ -135,7 +48,7 @@
                     <p class="lead">Sigma offers a wide range of indemand features such as hospital locators, booking appointments with doctors, taking free courses and so much more. To get a full list of all of our features, click <a href="#why-us" class="active">here</a>. To start taking advantage of these features, <a href="#" class="active">register</a>  on Sigma today</p>
                 </div>
                 <div class="col-md-5">
-                    <img src="assets/img/6974922_4447 (1).jpg" alt="image" width="500" height="500" class="img-fluid">
+                    <img src="{% static 'assets/img/6974922_4447 (1).jpg' %}" alt="image" width="500" height="500" class="img-fluid">
                 </div>
             </div>
             <!--Marketing Item End-->
@@ -147,7 +60,7 @@
                     <p class="lead">Asides the obvious of trying to win the solutions challenge, Sigma was made to help people easily access medical services.</p>
                 </div>
                 <div class="col-md-5 order-md-1">
-                    <img src="assets/img/11235354_10595.jpg" alt="hdfhjdf" class="img-fluid">
+                    <img src="{% static 'assets/img/11235354_10595.jpg' %}" alt="hdfhjdf" class="img-fluid">
                 </div>
             </div>
             <!--Marketing Item End-->
@@ -285,15 +198,4 @@
   
         </div>
     </section><!-- End Contact Section -->
-
-    <div id="preloader"></div>
-
-
-    <script src="assets/vendor/bootstrap/js/bootstrap.bundle.js"></script>
-    <script src="assets/vendor/aos/aos.js"></script>
-    <script src="assets/js/script.js"></script>
-    <script>
-        AOS.init();
-    </script>
-</body>
-</html>
+    {% endblock %}

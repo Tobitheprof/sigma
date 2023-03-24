@@ -12,7 +12,7 @@ urlpatterns = [
     # ---------- No Auth URLs ------------ #
     path('', views.index, name="index"),
     path('login', views.login, name="login"),
-    path('regsiter', views.register, name="register"),
+    path('register', views.register, name="register"),
 
     # ---------- No Auth URLs End --------- #
 ]
