@@ -1,0 +1,97 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800,900" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'assets/vendor/aos/aos.css' %}">
+    <link rel="shortcut icon" href="{% static 'assets/img/logo.png' %}" type="image/x-icon">
+	<link rel="stylesheet" href="{% static 'assets/vendor/bootstrap-icons-1.10.3/bootstrap-icons.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/vendor/aos/aos.css' %}">
+    <title>Sigma | Dashboard</title>
+    <style>
+        section{
+            padding: 12px 0;
+        }
+    </style>
+    <link rel="stylesheet" href="{% static 'assets/css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/styles.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/home.css' %}">
+  </head>
+  <body>
+    <div class="wrapper d-flex align-items-stretch">
+      <nav id="sidebar" class="animate__animated animate__flipInX">
+				<div class="custom-menu">
+					<button type="button" id="sidebarCollapse" class="btn btn-custom">
+						<i class="bi bi-text-right fw-bold"></i>
+						<span class="sr-only">Toggle Menu</span>
+	        </button>
+        </div>
+				<div class="p-4">
+					<h1><a href="#" class="logo"><img src="{% static 'assets/img/logo.png' %}" alt="" width="100" height="100"></h1>
+					<ul class="list-unstyled components mb-5">
+
+						<li>
+              <a href="#" class="white-text"><i class="bi bi-house mr-3 white-text"></i> Home</a>
+            </li>
+
+						<li class="active">
+	            <a href="#editSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"><i class="bi bi-pencil-fill mr-3"></i> Edit Profile</a>
+	            <ul class="collapse list-unstyled" id="editSubmenu">
+                <li>
+                    <a href="#"><i class="bi bi-clipboard-plus mr-3"></i> Medical Information</a>
+                </li>
+                <li>
+                    <a href="#"><i class="bi bi-person-fill mr-3"></i> Personal and Contact Information</a>
+                </li>
+	            </ul>
+	          </li>
+
+						<li class="active">
+	            <a href="#editSubmenu"><i class="bi bi-robot mr-3"></i> SigmaAI</a>
+	          </li>
+
+						<li>
+						    <a href="#" class="white-text"><i class="bi bi-file-spreadsheet mr-3 white-text"></i> Blog</a>
+						</li>
+
+						<li>
+						    <a href="#" class="white-text"><i class="bi bi-card-heading mr-3 white-text"></i> Courses</a>
+						</li>
+
+						<li>
+						    <a href="#" class="white-text"><i class="bi bi-trophy mr-3 white-text"></i> Book an Appointment</a>
+						</li>
+
+						<li>
+						    <a href="#" class="white-text"><i class="bi bi-arrow-right mr-3 white-text"></i> Logout</a>
+						</li>
+
+					</ul>
+				</div>
+
+				<div class="footer">
+					<p class="mr-3">Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | Sigma</p>
+				</div>
+			</nav>
+
+		<!-- Page Content  -->
+		<div id="content" class="p-2 p-md-5 pt-5">
+			{% block content %}
+			
+			{% endblock %}
+			
+		</div>
+	</div>
+
+
+    <script src="{% static 'assets/js/jquery.min.js' %}"></script>
+    <script src="{% static 'assets/js/popper.js' %}"></script>
+    <script src="{% static 'assets/vendor/aos/aos.js' %}"></script>
+    <script>AOS.init();</script>
+    <script src="{% static 'assets/js/bootstrap.min.js' %}"></script>
+    <script src="{% static 'assets/js/main.js' %}"></script>
+    <script src="{% static 'assets/js/ass.js' %}"></script>
+  </body>
+</html>

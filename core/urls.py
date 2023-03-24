@@ -3,7 +3,11 @@ from . import views
 urlpatterns = [
     # ---------- Auth URLs ------------- #
 
-    path('home', views.index, name="home"),
+    path('home', views.home, name="home"),
+    path('logout/', views.logout, name="logout"),
+    path('profile', views.profile, name="profile"),
+    path('appointment', views.appointment, name="appointment"),
+    path('doctor', views.doctor, name="doctor"),
 
     # ---------- Auth URLs End ---------- #
 

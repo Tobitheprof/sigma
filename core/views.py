@@ -10,8 +10,27 @@ from django.db.models import Q
 
 
 # -------------- Auth Views ------------ #
+@login_required
 def home(request):
     return render(request, 'home.html')
+
+@login_required
+def logout(request):
+    auth.logout(request)
+    return redirect('login')
+
+@login_required
+def profile(request):
+    return redirect(request, 'profile.html')
+
+@login_required
+def appointment(request):
+    return render(request, 'appointment.html')
+
+@login_required
+def doctor(request):
+    return render(request, 'doctor.html')
+
 # -------------- Auth Views End --------- #
 
 # ----------- No Auth Views ------------ #
@@ -19,7 +38,30 @@ def index(request):
     return render(request, 'index.html')
 
 def login(request):
-    return render(request, 'login.html')
+    # user = request.user
+
+    # if user.is_authenticated:
+    #     return redirect(home)
+
+    context = {
+        'title' : 'Login',
+    }
+    if request.method == 'POST':
+        username = request.POST['username'] #Requesting Username
+        password = request.POST['password'] #Requesting Password
+    
+        user = auth.authenticate(username=username, password=password)
+
+        if user is not None: #Cheking If User Exists in the database
+            auth.login(request, user) # Logs in User
+            return redirect('home') # Redirects to home view
+        else:
+            messages.info(request, 'Invalid Username or Password') #Conditional Checking if credentials are correct
+            return redirect('login')#Redirects to login if invalid
+
+    else:
+        return render(request, 'login.html', context)
+
 
 def register(request):
     # user = request.user
