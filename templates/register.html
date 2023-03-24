@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <link rel="stylesheet" href="assets/vendor/bootstrap/css/bootstrap.css">
+    <link rel="stylesheet" href="assets/vendor/animate.css/animate.css">
+    <link rel="stylesheet" href="assets/vendor/bootstrap-icons-1.10.3/bootstrap-icons.css">
+    <link rel="stylesheet" href="assets/vendor/aos/aos.css">
+    <link rel="stylesheet" href="assets/css/styles.css">
+    <link rel="stylesheet" href="assets/css/forms.css">
+    <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800,900" rel="stylesheet">
+</head>
+<body>
+    <!--Nav Bar Start-->
+    <nav class="navbar navbar-expand-md navbar-light shadow sticky-top bg-light">
+        <div class="container-xl">
+            <a href="#" class="navbar-brand">
+                <img src="assets/img/logo.png" alt="" class="img-fluid" width="50" height="70"> <span>SIGMA</span>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#sidebar" aria-controls="offcanvasExample">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse justify-content-end align-center" id="#">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a href="#" class="nav-link active">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#about" class="nav-link">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#" class="nav-link">Login</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <!--Nav End-->
+
+    <!--Offcanvas Start (NavBar) --> 
+    <div class="offcanvas offcanvas-start" tabindex="-1" id="sidebar" aria-labelledby="sidebar-label">
+        <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="sidebar-label"><span><img src="assets/img/logo.png" alt="" width="50" height="50">Sigma</span></h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#sidebar" aria-label="Close"></button>
+        </div>
+        <div class="border-bottom fw-bold"></div>
+
+        <div class="offcanvas-body">
+            <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+                <li class="nav-item">
+                  <a class="nav-link active" aria-current="page" href="#">Home</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="#">Blog</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Login</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Register</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link btn btn-custom custom-text rounded p-2">Get Started</a>
+                </li>
+                <!-- <li class="nav-item dropdown">
+                  <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    Dropdown
+                  </a>
+                  <ul class="dropdown-menu">
+                    <li><a class="dropdown-item" href="#">Action</a></li>
+                    <li><a class="dropdown-item" href="#">Another action</a></li>
+                    <li>
+                      <hr class="dropdown-divider">
+                    </li>
+                    <li><a class="dropdown-item" href="#">Something else here</a></li>
+                  </ul>
+                </li> -->
+              </ul>
+        </div>
+        
+        <div class="offcanvas-footer">
+            <a href="{% url 'logout' %}" style="text-decoration: none; color: black;"><p class="lead ms-3"><i class="bi bi-box-arrow-left me-2"></i><span style="color: red;">Logout</span></p></a>
+        </div>
+
+    </div>
+    <!--Offcanvas End-->
+
+    <!--Login-->
+    <section id="login" class="form">
+        <div class="container vh-45" style="margin-top:70px">
+            <div class="" style="margin-top:50px">
+                <div class="rounded d-flex justify-content-center">
+                    <div class="col-md-4 col-sm-12 shadow-lg p-5">
+                        <div class="text-center">
+                            <img src="assets/img/logo.png" alt="" width="70" height="70" class="mb-3">
+                        </div>
+
+                        <div class="text-start ms-3 mt-3">
+                            <p class="fw-bold lead" style="color: #3f3e3e !important;">Sign Up with Sigma</p>
+                            <!-- {% if messages %}
+                            {% for message in messages %}
+                            <p class="header-color">{{message}}</p>
+                            {% endfor %}
+                            {% endif %} -->
+                        </div>
+                        <form action="" method="POST" class="">
+                            <!-- {% csrf_token %} -->
+                            <div class="p-2">
+
+                                <input type="text" class="form-control mb-3" placeholder="First Name" name="first_name">
+                                <input type="text" class="form-control mb-3" placeholder="Last Name" name="last_name">
+                                <input type="email" class="form-control mb-3" placeholder="Email" name="email">
+                                <input type="password" class="form-control mb-3" placeholder="Password" name="password">
+                                <input type="password" class="form-control" placeholder="Password Confirmation" name="password2">
+
+
+                                <button class="btn btn-secondary text-center mt-3 btn-custom mb-3 btn-xl shadow p-2" type="submit">
+                                    Login
+                                </button>
+
+                                <div class="text-center"><p class="text-muted">- Or Login With -</p></div>
+                                <div class="row align-items-center justify-content-center">
+                                    <div class="col">
+                                        <div class="box">
+                                            <div class="">
+                                                <p class="text-center"><a href="#"><i class="bi bi-google" style="font-size: larger; font-weight: bolder;"></i></a></p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <p class="text-center mt-4">Don't have an account?
+                                    <a href="#" style="text-decoration: none;"><span class="green-text">Sign Up</span></a>
+                                </p>
+                                <a href="#" style="text-decoration: none;"><p class="text-center">Forgot your password?</p></a>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!--Login end-->
+
+
+
+    <script src="assets/vendor/bootstrap/js/bootstrap.bundle.js"></script>
+    <script src="assets/vendor/aos/aos.js"></script>
+    <script>
+        AOS.init();
+    </script>
+</body>
+</html>

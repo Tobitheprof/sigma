@@ -1,0 +1,38 @@
+:root{
+    --input-bg: #f7f7f7;
+    --text-color: #939393;
+    --text-bg: #fff;
+}
+
+.form{
+    background: var(--input-bg);
+}
+
+
+input[type=email]{
+    background: var(--text-bg) !important;
+    border-radius: none !important;
+    color: var(--text-color);
+
+}
+input[type=email]:focus{
+    box-shadow: none;
+}
+input[type=text]{
+    background: var(--text-bg) !important;
+    border-radius: none !important;
+    color: var(--text-color);
+
+}
+input[type=text]:focus{
+    box-shadow: none;
+}
+input[type=password]{
+    background: var(--text-bg) !important;
+    border-radius: none !important;
+    color: var(--text-color);
+
+}
+input[type=password]:focus{
+    box-shadow: none;
+}

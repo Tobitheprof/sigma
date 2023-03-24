@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <link rel="stylesheet" href="assets/vendor/bootstrap/css/bootstrap.css">
+    <link rel="stylesheet" href="assets/vendor/animate.css/animate.css">
+    <link rel="stylesheet" href="assets/vendor/bootstrap-icons-1.10.3/bootstrap-icons.css">
+    <link rel="stylesheet" href="assets/vendor/aos/aos.css">
+    <link rel="stylesheet" href="assets/css/styles.css">
+    <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800,900" rel="stylesheet">
+</head>
+<body>
+    <!--Nav Bar Start-->
+    <nav class="navbar navbar-expand-md navbar-light shadow sticky-top">
+        <div class="container-xl">
+            <a href="#" class="navbar-brand">
+                <img src="assets/img/logo.png" alt="" class="img-fluid" width="50" height="70"> <span>SIGMA</span>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#sidebar" aria-controls="offcanvasExample">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse justify-content-end align-center" id="#">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a href="#" class="nav-link active">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#about" class="nav-link">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#" class="nav-link">Login</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <!--Nav End-->
+
+    <!--Offcanvas Start (NavBar) --> 
+    <div class="offcanvas offcanvas-start" tabindex="-1" id="sidebar" aria-labelledby="sidebar-label">
+        <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="sidebar-label"><span><img src="assets/img/logo.png" alt="" width="50" height="50">Sigma</span></h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#sidebar" aria-label="Close"></button>
+        </div>
+        <div class="border-bottom fw-bold"></div>
+
+        <div class="offcanvas-body">
+            <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+                <li class="nav-item">
+                  <a class="nav-link active" aria-current="page" href="#">Home</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="#">Blog</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Login</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Register</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link btn btn-custom custom-text rounded p-2">Get Started</a>
+                </li>
+                <!-- <li class="nav-item dropdown">
+                  <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    Dropdown
+                  </a>
+                  <ul class="dropdown-menu">
+                    <li><a class="dropdown-item" href="#">Action</a></li>
+                    <li><a class="dropdown-item" href="#">Another action</a></li>
+                    <li>
+                      <hr class="dropdown-divider">
+                    </li>
+                    <li><a class="dropdown-item" href="#">Something else here</a></li>
+                  </ul>
+                </li> -->
+              </ul>
+        </div>
+        
+        <div class="offcanvas-footer">
+            <a href="#" style="text-decoration: none; color: black;"><p class="lead ms-3"><i class="bi bi-box-arrow-left me-2"></i><span style="color: red;">Logout</span></p></a>
+        </div>
+
+    </div>
+    <!--Offcanvas End-->
+
+
+    <!--Hero Section-->
+    <section id="intro">
+        <div class="container-lg">
+            <div class="row justify-content-center align-items-center">
+                <div class="col-md-4 text-center text-md-start">
+                    <h2 class="display-4 animate__animated animate__fadeInDown"><span class="fw-bold">Sigma</span></h2>
+                    <!-- <h4 class="display-6 text-muted">The free portfolio generator</h4> -->
+                    <p class="lead my-3 text-muted justice animate__animated animate__fadeInUp">Sigma is your one stop health app where you can find hospitals and doctors, enjoy free mdeical courses, latest medical news and also connect with emergency services as well as see first aid procedures for common illnesses.</p>
+                    <a href="#" class="btn btn-custom custom-text animate__animated animate__fadeInUp">Get Started</a>
+                </div>
+                <div class="col-md-8 d-none d-md-block text-center animate__animated animate__fadeInRight">
+                    <span class="goat" data-bs-placement="bottom" title="Tobi is tha GOAT">
+                        <img src="assets/img/12557511_4997671-removebg.png" alt="coffee bag" class="img-fluid">
+                    </span>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!--Hero End-->
+
+    <!--Marketing Start-->
+    <section id="about">
+        <div class="container">
+            <div class="text-center">
+                <h2 class="fw-bold">About <span>Sigma</span></h2>
+            </div>
+            <!--Marketing Item Start-->
+            <div class="row featurette mb-4 justify-content-center align-items-center mt-3" data-aos="fade-down" data-aos-delay="300" data-aos-offset="0">
+                <div class="col-md-7 order-md-2 mt-5">
+                    <div class="animate__animated animate__fadeInRight">
+                        <h3 class="featurette-heading header-color">What's Sigma? <span class="muted">and how can it help me?</span></h3>
+                        <p class="lead">Sigma is a one stop web app for all of your medical needs. With Sigma, you get access to a whole lot of cool features that'll make taking care of medical needs a breeze. Get started today to start enjoying these benefits</p>
+                    </div>
+                </div>
+                <div class="col-md-5 order-md-1 animate__animated animate__fadeInDown">
+                    <img src="assets/img/7069376_3304458.jpg" alt="image" class="img-fluid" width="500" height="500">
+                </div>
+            </div>
+            <!--Marketing Item End-->
+
+            <!--Marketing Item Start-->
+            <div class="row featurette mb-4 justify-content-center align-items-center mt-3" data-aos="fade-down" data-aos-delay="300" data-aos-offset="0">
+                <div class="col-md-7 mt-5">
+                    <h3 class="featurette-heading header-color">What features does Sigma offer? <span class="muted">How do I take advantage of them?</span></h3>
+                    <p class="lead">Sigma offers a wide range of indemand features such as hospital locators, booking appointments with doctors, taking free courses and so much more. To get a full list of all of our features, click <a href="#why-us" class="active">here</a>. To start taking advantage of these features, <a href="#" class="active">register</a>  on Sigma today</p>
+                </div>
+                <div class="col-md-5">
+                    <img src="assets/img/6974922_4447 (1).jpg" alt="image" width="500" height="500" class="img-fluid">
+                </div>
+            </div>
+            <!--Marketing Item End-->
+
+            <!--Marketing Item Start-->
+            <div class="row featurette mb-4 justify-content-center align-items-center mt-3" data-aos="fade-down" data-aos-delay="300" data-aos-offset="0">
+                <div class="col-md-7 order-md-2 mt-5">
+                    <h3 class="featurette-heading header-color">What's the purpose of Sigma? <span class="muted">It's quite simple</span></h3>
+                    <p class="lead">Asides the obvious of trying to win the solutions challenge, Sigma was made to help people easily access medical services.</p>
+                </div>
+                <div class="col-md-5 order-md-1">
+                    <img src="assets/img/11235354_10595.jpg" alt="hdfhjdf" class="img-fluid">
+                </div>
+            </div>
+            <!--Marketing Item End-->
+        </div>
+    </section>
+    <!--Marketing End-->
+
+    <!-- Features Section(Cards) -->
+    <section id="why-us" class="why-us">
+        <div class="container">
+  
+          <div class="section-title">
+            <h2>Why should I use <span>Sigma?</span></h2>
+            <p class="lead">Check out the awesome and unique features that makes Sigma awesome</p>
+          </div>
+  
+          <div class="row" data-aos="fade-down" data-aos-delay="300" data-aos-offset="0">
+  
+            <div class="col-lg-4 mb-2 animate__animated animate__fadeInDown" data-aos="fade-down" data-aos-delay="300" data-aos-offset="0">
+              <div class="box">
+                <span><i class="bi bi-speedometer"></i></span>
+                <h4>Fast & Efficient</h4>
+                <p>Get quick access to essential medical information and streamline your patient care with our fast and efficient medical app. Spend less time searching and more time treating with our user-friendly interface and intuitive features.👌</p>
+              </div>
+            </div>
+  
+            <div class="col-lg-4 mt-4 mt-lg-0 mb-2 animate__animated animate__fadeInDown">
+              <div class="box">
+                <span><i class="bi bi-map"></i></span>
+                <h4>Hospital Locator</h4>
+                <p>Find nearby hospitals and medical facilities in a snap with our hospital locator feature. Easily locate emergency rooms, urgent care centers, and specialist clinics to get the care you need, when you need it most.</p>
+              </div>
+            </div>
+  
+            <div class="col-lg-4 mt-4 mt-lg-0 mb-2 animate__animated animate__fadeInDown">
+              <div class="box">
+                <span><i class="bi bi-filter-square"></i></span>
+                <h4>Free Courses</h4>
+                <p>Upgrade your medical knowledge with our free courses feature. Access a variety of courses taught by top healthcare professionals and advance your career from the comfort of your own device, all at no cost to you.</p>
+              </div>
+            </div>
+
+            <div class="col-lg-4 mb-2 animate__animated animate__fadeInDown">
+                <div class="box">
+                  <span><i class="bi bi-phone"></i></span>
+                  <h4>Emergency Services</h4>
+                  <p>In times of crisis, every second counts. With our emergency services feature, quickly dial emergency services and get the help you need, wherever you are. Our app also provides vital information to first responders, helping to ensure the best possible care in an emergency situation.</p>
+                </div>
+              </div>
+    
+            <div class="col-lg-4 mt-4 mt-lg-0 mb-2 animate__animated animate__fadeInDown">
+                <div class="box">
+                    <span><i class="bi bi-calendar-plus"></i></span>
+                    <h4>Book Appointments</h4>
+                    <p>Say goodbye to long wait times and scheduling conflicts with our book appointments feature. Easily book appointments with healthcare providers at your convenience, and receive automated reminders to keep you on track with your healthcare needs.</p>
+                </div>
+            </div>
+    
+            <div class="col-lg-4 mt-4 mt-lg-0 mb-2 animate__animated animate__fadeInDown">
+                <div class="box">
+                    <span><i class="bi bi-folder"></i></span>
+                    <h4>Organized Content</h4>
+                    <p>Our medical app offers organized content for easy access to reliable medical information.</p>
+                </div>
+            </div>
+  
+          </div>
+  
+        </div>
+    </section>
+    <!-- End -->
+
+    <!-- ======= Contact Section ======= -->
+    <section id="contact" class="contact">
+        <div class="container">
+  
+          <div class="section-title">
+            <h2><span>Contact</span> Us</h2>
+            <p>Want to reach out to us? Send us a message and our support team will get back to you ASAP</p>
+          </div>
+        </div>
+
+        <div class="container mt-5">
+  
+          <div class="info-wrap">
+            <div class="row">
+              <div class="col-lg-3 col-md-6 info">
+                <i class="bi bi-geo-alt"></i>
+                <h4>Location:</h4>
+                <p>We're a remote company</p>
+              </div>
+  
+              <div class="col-lg-3 col-md-6 info mt-4 mt-lg-0">
+                <i class="bi bi-clock"></i>
+                <h4>Open Hours:</h4>
+                <p>We're always available to serve you 24/7</p>
+              </div>
+  
+              <div class="col-lg-3 col-md-6 info mt-4 mt-lg-0">
+                <i class="bi bi-envelope"></i>
+                <h4>Email:</h4>
+                <p>tobiekundayo07@gmail.com</p>
+              </div>
+  
+              <div class="col-lg-3 col-md-6 info mt-4 mt-lg-0">
+                <i class="bi bi-phone"></i>
+                <h4>Call:</h4>
+                <p>+234 (0)91 5937 2550</p>
+              </div>
+            </div>
+          </div>
+  
+          <form action="forms/contact.php" method="post" role="form" class="php-email-form">
+            <div class="row">
+              <div class="col-md-6 form-group">
+                <input type="text" name="name" class="form-control" id="name" placeholder="Your Name" required>
+              </div>
+              <div class="col-md-6 form-group mt-3 mt-md-0">
+                <input type="email" class="form-control" name="email" id="email" placeholder="Your Email" required>
+              </div>
+            </div>
+            <div class="form-group mt-3">
+              <input type="text" class="form-control" name="subject" id="subject" placeholder="Subject" required>
+            </div>
+            <div class="form-group mt-3">
+              <textarea class="form-control" name="message" rows="5" placeholder="Message" required></textarea>
+            </div>
+            <div class="my-3">
+              <div class="loading">Loading</div>
+              <div class="error-message"></div>
+              <div class="sent-message">Your message has been sent. Thank you!</div>
+            </div>
+            <div class="text-center"><button type="submit">Send Message</button></div>
+          </form>
+  
+        </div>
+    </section><!-- End Contact Section -->
+
+    <div id="preloader"></div>
+
+
+    <script src="assets/vendor/bootstrap/js/bootstrap.bundle.js"></script>
+    <script src="assets/vendor/aos/aos.js"></script>
+    <script src="assets/js/script.js"></script>
+    <script>
+        AOS.init();
+    </script>
+</body>
+</html>

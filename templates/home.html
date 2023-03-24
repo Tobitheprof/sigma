@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800,900" rel="stylesheet">
+    <link rel="stylesheet" href="assets/vendor/bootstrap-icons-1.10.3/bootstrap-icons.css">
+    <link rel="shortcut icon" href="assets/img/logo.png" type="image/x-icon">
+    <link rel="stylesheet" href="assets/vendor/aos/aos.css">
+    <title>Sigma | Dashboard</title>
+    <style>
+        section{
+            padding: 12px 0;
+        }
+    </style>
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/styles.css">
+    <link rel="stylesheet" href="assets/css/home.css">
+    <link rel="stylesheet" href="assets/vendor/bootstrap-icons-1.10.3/bootstrap-icons.css">
+  </head>
+  <body>
+    <div class="wrapper d-flex align-items-stretch">
+      <nav id="sidebar" class="animate__animated animate__flipInX">
+				<div class="custom-menu">
+					<button type="button" id="sidebarCollapse" class="btn btn-custom">
+						<i class="bi bi-text-right fw-bold"></i>
+						<span class="sr-only">Toggle Menu</span>
+	        </button>
+        </div>
+				<div class="p-4">
+					<h1><a href="#" class="logo"><img src="assets/img/logo.png" alt="" width="100" height="100"></h1>
+					<ul class="list-unstyled components mb-5">
+
+						<li>
+              <a href="#" class="white-text"><i class="bi bi-house mr-3 white-text"></i> Home</a>
+            </li>
+
+						<li class="active">
+	            <a href="#editSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"><i class="bi bi-pencil-fill mr-3"></i> Edit Profile</a>
+	            <ul class="collapse list-unstyled" id="editSubmenu">
+                <li>
+                    <a href="#"><i class="bi bi-clipboard-plus mr-3"></i> Medical Information</a>
+                </li>
+                <li>
+                    <a href="#"><i class="bi bi-person-fill mr-3"></i> Personal and Contact Information</a>
+                </li>
+	            </ul>
+	          </li>
+
+						<li class="active">
+	            <a href="#editSubmenu"><i class="bi bi-robot mr-3"></i> SigmaAI</a>
+	          </li>
+
+						<li>
+						    <a href="#" class="white-text"><i class="bi bi-file-spreadsheet mr-3 white-text"></i> Blog</a>
+						</li>
+
+						<li>
+						    <a href="#" class="white-text"><i class="bi bi-card-heading mr-3 white-text"></i> Courses</a>
+						</li>
+
+						<li>
+						    <a href="#" class="white-text"><i class="bi bi-trophy mr-3 white-text"></i> Challenges</a>
+						</li>
+
+						<li>
+						    <a href="#" class="white-text"><i class="bi bi-arrow-right mr-3 white-text"></i> Logout</a>
+						</li>
+
+					</ul>
+				</div>
+
+				<div class="footer">
+					<p class="mr-3">Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | Sigma</p>
+				</div>
+			</nav>
+
+		<!-- Page Content  -->
+		<div id="content" class="p-2 p-md-5 pt-5">
+
+			<section id="header">
+        <h3>Welcome to <span>Sigma</span></h3>
+        <p class="lead">What would you like to do <span>today?</span></p>
+      </section>
+
+      <section id="popular-courses" class="courses">
+        <div class="" data-aos="fade-up"  data-aos-delay="500">
+          <div class="row" data-aos-delay="100">
+
+            <div class="col-lg-4 col-md-6 d-flex align-items-stretch mb-3">
+              <div class="course-item">
+                <img src="assets/img/7303557.jpg" class="img-fluid" alt="...">
+                <div class="course-content">
+                  <div class="d-flex justify-content-between align-items-center mb-3">
+                    <a href="{{a.link_to_pay}}"><h4>Get Started</h4></a>
+                    <p class="price"></p>
+                  </div>
+  
+                  <h3><a href="">Book an Appointment</a></h3>
+                  <p>Stay ahead of the health game with regular doctor visits! Research reveals that folks who see a physician at least once a month enjoy better health. Don't wait till it's too late, schedule your appointment now and start thriving!</p>
+                  <div class="trainer d-flex justify-content-between align-items-center">
+                    <div class="trainer-profile d-flex align-items-center">
+                      <i class="bi bi-person-fill"></i>
+                      <span>Sigma</span>
+                    </div>
+                    <!-- <div class="trainer-rank d-flex align-items-center">
+                      <i class="bx bx-user"></i>&nbsp;50
+                      &nbsp;&nbsp;
+                      <i class="bx bx-heart"></i>&nbsp;65
+                    </div> -->
+                  </div>
+                </div>
+              </div>
+            </div> <!-- End Course Item-->
+
+            <div class="col-lg-4 col-md-6 d-flex align-items-stretch mb-3">
+              <div class="course-item">
+                <img src="assets/img/12699849_Student girls learning medicine online.jpg" class="img-fluid" alt="...">
+                <div class="course-content">
+                  <div class="d-flex justify-content-between align-items-center mb-3">
+                    <a href="{{a.link_to_pay}}"><h4>Get Started</h4></a>
+                    <p class="price"></p>
+                  </div>
+  
+                  <h3><a href="">Learn Something New</a></h3>
+                  <p>Ready to spice up your medical knowledge? Sigma's courses bring you the best from the best, delivering new insights straight from the source!</p>
+                  <div class="trainer d-flex justify-content-between align-items-center">
+                    <div class="trainer-profile d-flex align-items-center">
+                      <i class="bi bi-person-fill"></i>
+                      <span>Sigma</span>
+                    </div>
+                    <!-- <div class="trainer-rank d-flex align-items-center">
+                      <i class="bx bx-user"></i>&nbsp;50
+                      &nbsp;&nbsp;
+                      <i class="bx bx-heart"></i>&nbsp;65
+                    </div> -->
+                  </div>
+                </div>
+              </div>
+            </div> <!-- End Course Item-->
+
+            <div class="col-lg-4 col-md-6 d-flex align-items-stretch mb-3">
+              <div class="course-item">
+                <img src="assets/img/11667703_20945550.jpg" class="img-fluid" alt="...">
+                <div class="course-content">
+                  <div class="d-flex justify-content-between align-items-center mb-3">
+                    <a href="{{a.link_to_pay}}"><h4>Get Started</h4></a>
+                    <p class="price"></p>
+                  </div>
+  
+                  <h3><a href="">Hospital Finder</a></h3>
+                  <p>Don't let unfamiliar territory leave you stranded in a health crisis! Sigma's got your back with our Hospital Finder. Locate top-notch medical facilities in your vicinity with ease, so you can get the care you need, when you need it!</p>
+                  <div class="trainer d-flex justify-content-between align-items-center">
+                    <div class="trainer-profile d-flex align-items-center">
+                      <i class="bi bi-person-fill"></i>
+                      <span>Sigma</span>
+                    </div>
+                    <!-- <div class="trainer-rank d-flex align-items-center">
+                      <i class="bx bx-user"></i>&nbsp;50
+                      &nbsp;&nbsp;
+                      <i class="bx bx-heart"></i>&nbsp;65
+                    </div> -->
+                  </div>
+                </div>
+              </div>
+            </div> <!-- End Course Item-->
+
+            <div class="col-lg-4 col-md-6 d-flex align-items-stretch mb-3">
+              <div class="course-item">
+                <img src="assets/img/12150979_4921871.jpg" class="img-fluid" alt="...">
+                <div class="course-content">
+                  <div class="d-flex justify-content-between align-items-center mb-3">
+                    <a href="{{a.link_to_pay}}"><h4>Get Started</h4></a>
+                    <p class="price"></p>
+                  </div>
+  
+                  <h3><a href="">Talk to our AI Assistant</a></h3>
+                  <p>Get ready to experience the future of healthcare with SigmaAI, the powerful AI assistant fueled by GPT-3 technology! Your ultimate medical companion is here, ready to answer any and all questions you have about your health, right at your fingertips on Sigma. Get expert advice and peace of mind, all in one place!</p>
+                  <div class="trainer d-flex justify-content-between align-items-center">
+                    <div class="trainer-profile d-flex align-items-center">
+                      <i class="bi bi-person-fill"></i>
+                      <span>Sigma</span>
+                    </div>
+                    <!-- <div class="trainer-rank d-flex align-items-center">
+                      <i class="bx bx-user"></i>&nbsp;50
+                      &nbsp;&nbsp;
+                      <i class="bx bx-heart"></i>&nbsp;65
+                    </div> -->
+                  </div>
+                </div>
+              </div>
+            </div> <!-- End Course Item-->
+
+            <div class="col-lg-4 col-md-6 d-flex align-items-stretch mb-3">
+              <div class="course-item">
+                <img src="assets/img/7969553_3801650.jpg" class="img-fluid" alt="...">
+                <div class="course-content">
+                  <div class="d-flex justify-content-between align-items-center mb-3">
+                    <a href="{{a.link_to_pay}}"><h4>Get Started</h4></a>
+                    <p class="price"></p>
+                  </div>
+  
+                  <h3><a href="">First Aid</a></h3>
+                  <p>Be the hero in an emergency with Sigma's comprehensive First Aid training! Whether you're a seasoned pro or a novice responder, our user-friendly resources teach you how to administer life-saving techniques with ease. Don't wait for help to arrive, be the help with Sigma's First Aid training, explained in the simplest way possible!</p>
+                  <div class="trainer d-flex justify-content-between align-items-center">
+                    <div class="trainer-profile d-flex align-items-center">
+                      <i class="bi bi-person-fill"></i>
+                      <span>Sigma</span>
+                    </div>
+                    <!-- <div class="trainer-rank d-flex align-items-center">
+                      <i class="bx bx-user"></i>&nbsp;50
+                      &nbsp;&nbsp;
+                      <i class="bx bx-heart"></i>&nbsp;65
+                    </div> -->
+                  </div>
+                </div>
+              </div>
+            </div> <!-- End Course Item-->
+
+
+          </div>
+  
+        </div>
+      </section><!-- End Popular Courses Section -->
+
+		</div>
+	</div>
+
+
+    <script src="assets/js/jquery.min.js"></script>
+    <script src="assets/js/popper.js"></script>
+    <script src="assets/vendor/aos/aos.js"></script>
+    <script>AOS.init();</script>
+    <script src="assets/js/bootstrap.min.js"></script>
+    <script src="assets/js/main.js"></script>
+    <script src="assets/js/ass.js"></script>
+  </body>
+</html>

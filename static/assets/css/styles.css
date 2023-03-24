@@ -1,0 +1,343 @@
+/* -------------------------------- */
+
+/* Colors */
+:root{
+    --active-link: #051ea7;
+    --normal-link: #7695e2;
+    --muted-text : #99b3fcf3;
+    --btn-primary: #0c38b5;
+    --btn-hover:   #1f46b1;
+    --white-text: #fff;
+    --darker-white: #dfdede;
+    --light-black: #413e3e;
+    --shady-blue: #8b9bf1;
+}
+
+/* ------------------------------- */
+
+
+/* --------------------------------------------- */
+
+/* External Imports */
+
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+
+/* --------------------------------------------- */
+
+
+
+
+/* ---------------------------- */
+
+
+/* GLOBAL STYLING */
+*{
+    font-family: 'Poppins', sans-serif;
+}
+
+nav{
+    background: #fff !important;
+
+}
+body{
+  background: var(--white-text);
+}
+a{
+    color: var(--normal-link) !important;
+    text-decoration: none;
+}
+
+a:hover{
+    color: var(--active-link) !important;
+}
+
+.active{
+    color: var(--active-link) !important;
+}
+
+span{
+    color: var(--active-link) !important;
+}
+.muted{
+  color: var(--muted-text) !important;
+}
+
+section{
+    padding: 30px 0 !important;
+}
+
+.btn-custom{
+    background: var(--btn-primary);
+    color: rgb(241, 241, 241);
+}
+
+.btn-custom:hover{
+    background: var(--btn-hover);
+
+}
+.btn-xl{
+  width: 320px;
+}
+
+.custom-text{
+  color: var(--white-text) !important;
+}
+
+.custom-text:hover{
+  color: var(--white-text) !important;
+}
+
+.rounded{
+  border-radius: 25px !important;
+}
+.navbar-toggler-icon{
+  color: var(--light-black) !important;
+}
+
+#sidebar{
+  background-color: var(--active-link) !important;
+}
+
+/* ---------------------------- */
+
+/* Features CSS */
+
+.why-us .box {
+    padding: 50px 30px;
+    box-shadow: 0px 2px 15px rgba(0, 0, 0, 0.1);
+    transition: all ease-in-out 0.3s;
+    height: 100%;
+  }
+  
+  .why-us .box span {
+    display: block;
+    font-size: 70px;
+    font-weight: 700;
+    color: var(--active-link);
+  }
+  
+  .why-us .box h4 {
+    font-size: 24px;
+    font-weight: 600;
+    padding: 0;
+    margin: 20px 0;
+  }
+  
+  .why-us .box p {
+    color: #aaaaaa;
+    font-size: 15px;
+    margin: 0;
+    padding: 0;
+  }
+  
+  .why-us .box:hover{
+    background: var(--active-link);
+    color: var(--white-text);
+    padding: 30px 30px 70px 30px;
+    box-shadow: 10px 15px 30px rgba(0, 0, 0, 0.18);
+  }
+
+
+  
+  .why-us .box:hover span,
+  .why-us .box:hover h4,
+  .why-us .box:hover p {
+    color: #fff !important;
+  }
+
+/* --------------------------- */
+
+/* ------------- CONTACT CSS -------------- */
+
+.contact .info-wrap {
+  box-shadow: 0px 2px 15px rgba(0, 0, 0, 0.1);
+  padding: 30px;
+}
+
+.contact .info {
+  background: #fff;
+}
+
+.contact .info i {
+  font-size: 20px;
+  color: var(--btn-primary);
+  float: left;
+  width: 44px;
+  height: 44px;
+  background: var(--darker-white);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50px;
+  transition: all 0.3s ease-in-out;
+}
+
+.contact .info h4 {
+  padding: 0 0 0 60px;
+  font-size: 18px;
+  font-weight: 600;
+  margin-bottom: 5px;
+  color: #433f39;
+  font-family: "Poppins", sans-serif;
+}
+
+.contact .info p {
+  padding: 0 0 0 60px;
+  margin-bottom: 0;
+  font-size: 14px;
+  color: #7a7368;
+}
+
+.contact .info:hover i {
+  background: var(--btn-primary);
+  color: #fff;
+}
+
+.contact .php-email-form {
+  width: 100%;
+  box-shadow: 0 0 24px 0 rgba(0, 0, 0, 0.12);
+  padding: 30px;
+  background: #fff;
+}
+
+.contact .php-email-form .form-group {
+  padding-bottom: 8px;
+}
+
+.contact .php-email-form .error-message {
+  display: none;
+  color: #fff;
+  background: #ed3c0d;
+  text-align: center;
+  padding: 15px;
+  font-weight: 600;
+}
+
+.contact .php-email-form .sent-message {
+  display: none;
+  color: #fff;
+  background: #18d26e;
+  text-align: center;
+  padding: 15px;
+  font-weight: 600;
+}
+
+.contact .php-email-form .loading {
+  display: none;
+  background: #fff;
+  text-align: center;
+  padding: 15px;
+}
+
+.contact .php-email-form .loading:before {
+  content: "";
+  display: inline-block;
+  border-radius: 50%;
+  width: 24px;
+  height: 24px;
+  margin: 0 10px -6px 0;
+  border: 3px solid #18d26e;
+  border-top-color: #eee;
+  -webkit-animation: animate-loading 1s linear infinite;
+  animation: animate-loading 1s linear infinite;
+}
+
+.contact .php-email-form input,
+.contact .php-email-form textarea {
+  border-radius: 0;
+  box-shadow: none;
+  font-size: 14px;
+}
+
+.contact .php-email-form input {
+  height: 44px;
+}
+
+.contact .php-email-form textarea {
+  padding: 10px 12px;
+}
+
+.contact .php-email-form button[type=submit] {
+  background: var(--btn-primary);
+  border: 0;
+  padding: 10px 24px;
+  color: #fff;
+  transition: 0.4s;
+  border-radius: 50px;
+}
+
+.contact .php-email-form button[type=submit]:hover {
+  background: var(--btn-hover);
+}
+
+@-webkit-keyframes animate-loading {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes animate-loading {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+
+/* ------------------------- */
+
+/* ----------- Preloader CSS ------------- */
+#preloader {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 9999;
+  overflow: hidden;
+  background:  var(--active-link);
+}
+
+#preloader:before {
+  content: "";
+  position: fixed;
+  top: calc(50% - 30px);
+  left: calc(50% - 30px);
+  border: 6px solid  #0c38b5;
+  border-top-color: #fff;
+  border-bottom-color: #fff;
+  border-radius: 50%;
+  width: 60px;
+  height: 60px;
+  -webkit-animation: animate-preloader 5s linear infinite;
+  animation: animate-preloader 5s linear infinite;
+}
+
+@-webkit-keyframes animate-preloader {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes animate-preloader {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+
+/* -------------------------------------- */
