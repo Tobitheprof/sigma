@@ -21,15 +21,7 @@ class Profile(models.Model):
 	def __str__(self):
 		return self.owner.username
 	
-class Chat(models.Model):
-    initiator = models.ForeignKey(User, on_delete=models.SET_NULL, null=True)
-    text = models.TextField(max_length=500000000, null=True)
-    gpt = models.TextField(max_length=1700000000000000000000, null=True)
-    date = models.DateTimeField(auto_now_add=True, blank=True, null=True)
 
-
-    def __str__(self):
-        return self.text
     
 class Doctor(models.Model):
 	name = models.CharField(max_length=300, null=True)
@@ -38,6 +30,7 @@ class Doctor(models.Model):
 	picture = models.ImageField(upload_to="Images")
 	hospital = models.CharField(max_length=300, null=True)
 	bio = models.TextField(max_length=500, null=True)
+
 
 	def __str__(self):
 		return self.name

@@ -36,8 +36,12 @@ def doctor(request):
 
 @login_required
 def doc_profile(request, pk):
-    user_profile = Profile.objects.get(owner=request.user)
+    user_profile = Profile.objects.get_or_create(owner=request.user)
     user_object= Doctor.objects.get(phone_number=pk)
+    context = {
+        'user_profile' : user_profile,
+        'user_object' : user_object,
+    }
     if request.method == "POST":
         
         ctx = {
@@ -53,7 +57,7 @@ def doc_profile(request, pk):
         msg.content_subtype ="html"# Main content is now text/html
         msg.send()
     
-    return render(request, 'doctor-profile.html')
+    return render(request, 'doctor-profile.html', context)
 
 @login_required
 def courses(request):
