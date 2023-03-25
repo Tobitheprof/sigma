@@ -56,6 +56,9 @@ def doc_profile(request, pk):
 def courses(request):
     return render(request, 'courses.html')
 
+@login_required
+def chat(request):
+    return render(request, 'chat.html')
 # -------------- Auth Views End --------- #
 
 # ----------- No Auth Views ------------ #
