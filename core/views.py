@@ -31,6 +31,31 @@ def appointment(request):
 def doctor(request):
     return render(request, 'doctor.html')
 
+@login_required
+def doc_profile(request, pk):
+    user_profile = Profile.objects.get(owner=request.user)
+    user_object= Doctor.objects.get(phone_number=pk)
+    if request.method == "POST":
+        
+        ctx = {
+            'user' : user_profile.owner
+        }
+        message = get_template('appoint_mail.html').render(ctx)
+        msg = EmailMessage(
+            'Appointment Booking',
+            message,
+            'Sigma',
+            [user_object.email],
+        )
+        msg.content_subtype ="html"# Main content is now text/html
+        msg.send()
+    
+    return render(request, 'doctor-profile.html')
+
+@login_required
+def courses(request):
+    return render(request, 'courses.html')
+
 # -------------- Auth Views End --------- #
 
 # ----------- No Auth Views ------------ #
@@ -91,18 +116,18 @@ def register(request):
                 return redirect('register')
             #Else condition executed if the above conditions are not fulfilled    
             else:
-                # ctx = {
-                #     'user' : username
-                # }
-                # message = get_template('mail.html').render(ctx)
-                # msg = EmailMessage(
-                #     'Welcome to Paradoxx',
-                #     message,
-                #     'Paradoxx',
-                #     [email],
-                # )
-                # msg.content_subtype ="html"# Main content is now text/html
-                # msg.send()
+                ctx = {
+                    'user' : username
+                }
+                message = get_template('mail.html').render(ctx)
+                msg = EmailMessage(
+                    'Welcome to Paradoxx',
+                    message,
+                    'Paradoxx',
+                    [email],
+                )
+                msg.content_subtype ="html"# Main content is now text/html
+                msg.send()
                 user = User.objects.create_user(username=username, email=email, password=password, first_name=first_name, last_name=last_name )
                 user.save()
                 user_login = auth.authenticate(username=username, password=password)

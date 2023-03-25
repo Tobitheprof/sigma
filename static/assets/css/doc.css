@@ -1,0 +1,95 @@
+:root{
+    --active-link: #051ea7;
+    --normal-link: #7695e2;
+    --muted-text : #99b3fcf3;
+    --btn-primary: #0c38b5;
+    --btn-hover:   #1f46b1;
+    --white-text: #fff;
+    --darker-white: #dfdede;
+    --light-black: #413e3e;
+    --shady-blue: #8b9bf1;
+}
+
+body{
+    background:#eee;
+}
+
+.card{
+    border:none;
+
+    position:relative;
+    overflow:hidden;
+    border-radius:8px;
+    cursor:pointer;
+}
+
+.card:before{
+    
+    content:"";
+    position:absolute;
+    left:0;
+    top:0;
+    width:4px;
+    height:100%;
+    background-color:var(--normal-link);
+    transform:scaleY(1);
+    transition:all 0.5s;
+    transform-origin: bottom
+}
+
+.card:after{
+    
+    content:"";
+    position:absolute;
+    left:0;
+    top:0;
+    width:4px;
+    height:100%;
+    background-color:var(--active-link);
+    transform:scaleY(0);
+    transition:all 0.5s;
+    transform-origin: bottom
+}
+
+.card:hover::after{
+    transform:scaleY(1);
+}
+
+
+.fonts{
+    font-size:11px;
+}
+
+.social-list{
+    display:flex;
+    list-style:none;
+    justify-content:center;
+    padding:0;
+}
+
+.social-list li{
+    padding:10px;
+    color:var(--active-link);
+    font-size:19px;
+}
+
+
+.buttons button:nth-child(1){
+       border:1px solid #051ea7 !important;
+       color:var(--active-link);
+       height:40px;
+}
+
+.buttons button:nth-child(1):hover{
+       border:1px solid #051ea7 !important;
+       color:#fff;
+       height:40px;
+       background-color:var(--active-link);
+}
+
+.buttons button:nth-child(2){
+       border:1px solid #051ea7!important;
+       background-color:var(--active-link);
+       color:#fff;
+        height:40px;
+}

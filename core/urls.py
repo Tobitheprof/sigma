@@ -8,6 +8,8 @@ urlpatterns = [
     path('profile', views.profile, name="profile"),
     path('appointment', views.appointment, name="appointment"),
     path('doctor', views.doctor, name="doctor"),
+    path('doctor/profile/<str:pk>', views.doc_profile, name="doc-profile"),
+    path('courses', views.courses, name="courses"),
 
     # ---------- Auth URLs End ---------- #
 
