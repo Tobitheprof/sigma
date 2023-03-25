@@ -10,8 +10,6 @@ urlpatterns = [
     path('doctor', views.doctor, name="doctor"),
     path('doctor/profile/<str:pk>', views.doc_profile, name="doc-profile"),
     path('courses', views.courses, name="courses"),
-    path('chat', views.chat, name="chat"),
-
     # ---------- Auth URLs End ---------- #
 
 

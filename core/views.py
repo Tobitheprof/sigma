@@ -7,6 +7,9 @@ from django.core.mail import EmailMessage
 from django.contrib.auth.decorators import *
 from django.core.paginator import *
 from django.db.models import Q
+import openai
+from django.http import JsonResponse
+from django.views.decorators.csrf import csrf_exempt
 
 
 # -------------- Auth Views ------------ #
@@ -56,9 +59,6 @@ def doc_profile(request, pk):
 def courses(request):
     return render(request, 'courses.html')
 
-@login_required
-def chat(request):
-    return render(request, 'chat.html')
 # -------------- Auth Views End --------- #
 
 # ----------- No Auth Views ------------ #

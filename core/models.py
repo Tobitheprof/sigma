@@ -11,32 +11,33 @@ class Profile(models.Model):
 	owner = models.ForeignKey(User, on_delete=models.SET_NULL, null=True)
 	id_user = models.IntegerField(null=True)
 	phone_number = models.IntegerField(null=True)
-	how_did_you_hear_about_us = models.TextField()
-	what_will_you_use_sigma_for = models.TextField()
-	allergies = models.TextField()
-	blood_group = models.CharField(max_length=300)
-	genotype = models.CharField(max_length=300)
-	medical_condition = models.CharField(max_length=300)
+	how_did_you_hear_about_us = models.TextField(null=True)
+	what_will_you_use_sigma_for = models.TextField(null=True)
+	allergies = models.TextField(null=True)
+	blood_group = models.CharField(max_length=300, null=True)
+	genotype = models.CharField(max_length=300, null=True)
+	medical_condition = models.CharField(max_length=300, null=True)
 
 	def __str__(self):
 		return self.owner.username
 	
 class Chat(models.Model):
     initiator = models.ForeignKey(User, on_delete=models.SET_NULL, null=True)
-    text = models.TextField(max_length=500000000)
-    gpt = models.TextField(max_length=1700000000000000000000)
+    text = models.TextField(max_length=500000000, null=True)
+    gpt = models.TextField(max_length=1700000000000000000000, null=True)
     date = models.DateTimeField(auto_now_add=True, blank=True, null=True)
 
+
     def __str__(self):
-        return self.initiator.username
+        return self.text
     
 class Doctor(models.Model):
-	name = models.CharField(max_length=300)
+	name = models.CharField(max_length=300, null=True)
 	email = models.EmailField(unique=True)
-	phone_number = models.CharField(max_length=300)
+	phone_number = models.CharField(max_length=300, null=True)
 	picture = models.ImageField(upload_to="Images")
-	hospital = models.CharField(max_length=300)
-	bio = models.TextField(max_length=500)
+	hospital = models.CharField(max_length=300, null=True)
+	bio = models.TextField(max_length=500, null=True)
 
 	def __str__(self):
 		return self.name

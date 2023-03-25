@@ -1,0 +1,18 @@
+:root{
+    --active-link: #051ea7;
+    --normal-link: #7695e2;
+    --muted-text : #99b3fcf3;
+    --btn-primary: #0c38b5;
+    --btn-hover:   #1f46b1;
+    --white-text: #fff;
+    --darker-white: #dfdede;
+    --light-black: #413e3e;
+    --shady-blue: #8b9bf1;
+}
+
+.bg-sender{
+    background-color: var(--active-link) !important;
+}
+.bg-receive{
+    background-color: var(--normal-link) !important;
+}

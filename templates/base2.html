@@ -4,11 +4,11 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800,900" rel="stylesheet">
     <link rel="stylesheet" href="{% static 'assets/vendor/aos/aos.css' %}">
     <link rel="shortcut icon" href="{% static 'assets/img/logo.png' %}" type="image/x-icon">
 	<link rel="stylesheet" href="{% static 'assets/vendor/bootstrap-icons-1.10.3/bootstrap-icons.css' %}">
     <link rel="stylesheet" href="{% static 'assets/vendor/aos/aos.css' %}">
+	{% block css %}{% endblock %}
     <title>Sigma | Dashboard</title>
     <style>
         section{
@@ -18,6 +18,7 @@
     <link rel="stylesheet" href="{% static 'assets/css/style.css' %}">
     <link rel="stylesheet" href="{% static 'assets/css/styles.css' %}">
     <link rel="stylesheet" href="{% static 'assets/css/home.css' %}">
+	<link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800,900" rel="stylesheet">
   </head>
   <body>
     <div class="wrapper d-flex align-items-stretch">
@@ -92,5 +93,9 @@
     <script>AOS.init();</script>
     <script src="{% static 'assets/js/bootstrap.min.js' %}"></script>
     <script src="{% static 'assets/js/main.js' %}"></script>
+	<script src="{% static 'assets/js/chat.js' %}"></script>
+	<script src="{% static 'assets/js/ajax.js' %}"></script>
+
+
   </body>
 </html>
