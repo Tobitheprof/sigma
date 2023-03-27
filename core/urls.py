@@ -18,6 +18,8 @@ urlpatterns = [
     path('courses/psycology', views.psycology, name="psycology"),
     path('courses/dental-health', views.dental_health, name="dental-health"),
     path('courses/physical-fitness-and-exercise', views.physical_fitness_and_exercise, name="physical-fitness-and-exercise"),
+    path('courses/<str:slug>/', views.det, name="det"),
+
 
     # -------------- Courses Views End ------- #
     
