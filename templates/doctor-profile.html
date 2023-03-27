@@ -1,36 +1,59 @@
 {% extends 'base2.html' %}
 {% load static %}
-{% block content %}
 {% block css %}
 <link rel="stylesheet" href="{% static 'assets/css/doc.css' %}">
 {% endblock %}
-<div class="container mt-5">
-    
-    <div class="row d-flex justify-content-center">
-        <div class="col-md-7">
-            <div class="card p-5mana py-4">
-                <div class="text-center">
-                    <img src="{{user_object.picture.url}}" width="100" class="rounded-circle">
-                </div>
-                
-                <div class="text-center mt-3">
-                    {% comment %} <span class="bg-secondary p-1 px-4 rounded text-white">Pro</span> {% endcomment %}
-                    <h5 class="mt-2 mb-0">{{user_object.name}}</h5>
-                    <span>UI/UX Designer</span>
-                    <div class="px-4 mt-1">
-                        <p class="">Consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. </p>
-                    </div>    
-                    <div class="buttons">
-                        <button class="btn btn-outline-secondary px-4">Message</button>
-                        <button class="btn btn-custom px-4 ms-3">Contact</button>
+{% block content %}
+
+    <div class="container mt-5">
+        <div class="row d-flex justify-content-center">
+            <div class="col-md-7">
+                <div class="card p-5mana py-4">
+                    <div class="text-center">
+                        <img src="{{user_object.picture.url}}" width="100" class="rounded-circle">
+                    </div>
+                    <div class="text-center mt-3">
+                        {% comment %} <span class="bg-secondary p-1 px-4 rounded text-white">Pro</span> {% endcomment %}
+                        <h5 class="mt-2 mb-0">{{user_object.name}}</h5>
+                        <span class="lead">{{user_object.area_of_specialization}}</span>
+                        <div class="px-4 mt-1">
+                            <p class="lead">{{user_object.bio}}</p>
+                        </div>    
+                        <div class="buttons">
+                            <button class="btn btn-outline-secondary px-4" data-bs-toggle="modal" data-bs-target="#work">Book an Appoinment</button>
+                        </div>
                     </div>
                 </div>
-                
             </div>
-            
         </div>
-        
     </div>
-    
-</div>
+    <!--Modal Start-->
+    <div class="modal fade" id="work" tabindex="-1" aria-labelledby="modal-title" aria-hidden="true" data-bs-backdrop="static" data-bs-keyboard="false">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title"></h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form method="POST">
+                        {% csrf_token %}
+                        <label for="first">First Name: </label>
+                        <input type="text" class="form-control" name="first_name" id="last" required>
+                        <label for="last">Last Name: </label>
+                        <input type="text" class="form-control" id="last" name="last_name" required>
+                        <label for="email">Email Address: </label>
+                        <input type="email" id="email" name="email" class="form-control" required>
+                        <label for="Message" class="">Message: </label>
+                        <textarea name="message" id="message" cols="30" rows="10" class="form-control" required></textarea>    
+                        <button type="submit" class="btn btn-custom custom-text my-2">Send Message</button>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                <!-- <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button> -->
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--Modal End-->
 {% endblock %}

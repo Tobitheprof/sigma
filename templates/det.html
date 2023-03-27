@@ -1,0 +1,42 @@
+{% extends 'base2.html' %}
+{% load static %}
+{% block content %}
+
+<section id="lecture">
+    <div class="">
+        <div class="text-start">
+            <h3 class="green-text fw-bold">{{course.title}}</h3>
+            <p class="lead">{{course.description}}</p>
+            <p><a class="btn btn-custom white-text" type="button"  type="button" data-bs-toggle="modal" data-bs-target="#work">Lessons in this course</a></p>
+            <div class="embed-responsive embed-responsive-21by9">
+                <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/{{lecture.video_link}}" allowfullscreen></iframe>
+            </div>
+            <h4 class="green-text fw-bold mt-2">{{lecture.serial_number}}. {{lecture.title}}</h4>
+            <p class="lead">{{lecture.description}}</p>
+        </div>
+    </div>
+
+    <!--Modal Start-->
+    <div class="modal fade" id="work" tabindex="-1" aria-labelledby="modal-title" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title"><img src="{% static 'assets/img/Abudevs New Logo.png' %}" alt="" width="50" height="50"></h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <ul class="navbar-nav">
+                        {% for a in lectures %}
+                        <li class="nav-item list-group-item">
+                            <a href="?lecture={{a.serial_number}}" class="nav-link">{{a.serial_number}}. {{a}}</a>
+                        </li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--Modal End-->
+</section>
+
+{% endblock %}

@@ -7,9 +7,26 @@ from django.core.mail import EmailMessage
 from django.contrib.auth.decorators import *
 from django.core.paginator import *
 from django.db.models import Q
-import openai
-from django.http import JsonResponse
-from django.views.decorators.csrf import csrf_exempt
+
+
+"""
+Hello there, I'm Tobi, 17 year old full stack developer and data scientist. I'm also a freshman at a university, chasing a degree in engineering and I am author of Sigma and team lead for the Sigma project. This code here represents the main logic of Sigma, and it's what's responsible for the workings and architecture of Sigma. 
+
+All of this would not have been possible without help from my awesome team. I doubt they'll ever see this code right here but thank you guys for making this a reality, I love you guys very much. I really hope we win this solutions challenge and even if we don't, I don't want you guys to feel bad, we tried our best and in the end, we were able to come up with this and help solve a problem. I'm sure we'll build more amazing stuff in the future. 
+
+For each bug and feature I either solve or create, I'll drop a dad joke.
+
+1. What do you call a cow with no legs???
+    Ground Beef(solved user auth bug)
+
+2. Why are educated so hot???
+    Cause they have more degress(Fixed mailing list bugs)
+
+3. 
+"""
+
+
+
 
 
 # -------------- Auth Views ------------ #
@@ -32,7 +49,11 @@ def appointment(request):
 
 @login_required
 def doctor(request):
-    return render(request, 'doctor.html')
+    doctor = Doctor.objects.filter(approved="yes")
+    context = {
+        'doctor' : doctor
+    }
+    return render(request, 'doctor.html', context)
 
 @login_required
 def doc_profile(request, pk):
@@ -42,10 +63,22 @@ def doc_profile(request, pk):
         'user_profile' : user_profile,
         'user_object' : user_object,
     }
+    username = request.user
+
+
+
+
     if request.method == "POST":
-        
+        first_name = request.POST['first_name']
+        last_name = request.POST['last_name']
+        email_address = request.POST['email']
+        message = request.POST['message']
         ctx = {
-            'user' : user_profile.owner
+            'user' : username,
+            'email' : email_address,
+            'message' : message,
+            'first_name' : first_name,
+            'last_name' : last_name,
         }
         message = get_template('appoint_mail.html').render(ctx)
         msg = EmailMessage(
@@ -56,6 +89,8 @@ def doc_profile(request, pk):
         )
         msg.content_subtype ="html"# Main content is now text/html
         msg.send()
+        messages.info(request, 'Your appointment has been booked successfully, the appointed doctor will send you a message in regards to booking time as soon as possible.')
+        Appointment.objects.create(booker=request.user, first_name=first_name, last_name=last_name, email_address=email_address, message=message)
     
     return render(request, 'doctor-profile.html', context)
 
@@ -63,6 +98,91 @@ def doc_profile(request, pk):
 def courses(request):
     return render(request, 'courses.html')
 
+@login_required
+def self_health(request):
+    courses = Course.objects.filter(category="Self Health")
+    context = {
+        'course' : courses
+    }
+    return render(request, 'category.html', context)
+
+@login_required
+def mental_health(request):
+    courses = Course.objects.filter(category="Mental Health")
+    context = {
+        'course' : courses
+    }
+    return render(request, 'category.html', context)
+
+@login_required
+def care_giving(request):
+    courses = Course.objects.filter(category="Care Givnig")
+    context = {
+        'course' : courses
+    }
+    return render(request, 'category.html', context)
+
+@login_required
+def psycology(request):
+    courses = Course.objects.filter(category="Psycology")
+    context = {
+        'course' : courses
+    }
+    return render(request, 'category.html', context)
+
+@login_required
+def dental_health(request):
+    courses = Course.objects.filter(category="Dental Health")
+    context = {
+        'course' : courses
+    }
+    return render(request, 'category.html', context)
+
+@login_required
+def physical_fitness_and_exercise(request):
+    courses = Course.objects.filter(category="Physical Fitness and Exercise")
+    context = {
+        'course' : courses
+    }
+    return render(request, 'category.html', context)
+
+@login_required
+def det(request, slug):
+    course = Course.objects.get(slug = slug)
+    serial_number = request.GET.get('lecture')
+    lectures = course.lecture_set.all().order_by('serial_number')
+
+
+    if serial_number is None:
+        serial_number = 1
+    lecture = Lecture.objects.get(serial_number = serial_number, course = course)
+
+
+
+    context = {
+        'course' : course,
+        'lecture' : lecture,
+        'lectures' : lectures,
+        'title' : course
+
+    }
+    return render(request, 'det.html', context)
+
+@login_required
+def first_aid(request):
+    first_aid = FirstAid.objects.filter(approved="yes")
+    context = {
+        'first_aid' : first_aid
+    }
+    return render(request, 'first_aid.html', context)
+
+@login_required
+def first_det(request, pk):
+    first_aid = FirstAid.objects.get(slug=pk)
+    context = {
+        'first_aid' : first_aid
+    }
+    return render(request, 'first_detail.html', context)
 # -------------- Auth Views End --------- #
 
 # ----------- No Auth Views ------------ #
@@ -70,10 +190,10 @@ def index(request):
     return render(request, 'index.html')
 
 def login(request):
-    # user = request.user
+    user = request.user
 
-    # if user.is_authenticated:
-    #     return redirect(home)
+    if user.is_authenticated:
+        return redirect(home)
 
     context = {
         'title' : 'Login',
@@ -96,10 +216,10 @@ def login(request):
 
 
 def register(request):
-    # user = request.user
+    user = request.user
 
-    # if user.is_authenticated:
-    #     return redirect("home")
+    if user.is_authenticated:
+        return redirect("home")
     context = {
         'title' : 'Sign Up',
     }

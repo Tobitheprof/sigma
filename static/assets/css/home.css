@@ -1,5 +1,16 @@
 a:hover{
-    color: #fff !important;
+    color: #eee !important;
+}
+:root{
+  --active-link: #051ea7;
+  --normal-link: #7695e2;
+  --muted-text : #99b3fcf3;
+  --btn-primary: #0c38b5;
+  --btn-hover:   #1f46b1;
+  --white-text: #fff;
+  --darker-white: #dfdede;
+  --light-black: #413e3e;
+  --shady-blue: #8b9bf1;
 }
 /*--------------------------------------------------------------
 # Courses
@@ -20,7 +31,7 @@ a:hover{
     transition: 0.3s;
   }
   .courses .course-content h3 a:hover {
-    color:rgb(63, 1, 63);
+    color:var(--shady-blue) !important;
   }
   .courses .course-content p {
     font-size: 14px;
@@ -28,7 +39,7 @@ a:hover{
   }
   .courses .course-content h4 {
     font-size: 14px;
-    background:  #643CFF;
+    background:  var(--active-link);
     padding: 7px 14px;
     color: #fff;
     margin: 0;

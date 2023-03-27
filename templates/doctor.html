@@ -10,17 +10,20 @@
     <div class="" data-aos="fade-up"  data-aos-delay="500">
         <div class="row" data-aos-delay="100">
 
+            {% for d in doctor %}
             <div class="col-lg-4 col-md-6 d-flex align-items-stretch mb-3">
                 <div class="course-item">
-                <img src="{% static 'assets/img/7303557.jpg' %}" class="img-fluid" alt="...">
+                <img src="{{d.picture.url}}" class="img-fluid" alt="...">
                 <div class="course-content">
                     <div class="d-flex justify-content-between align-items-center mb-3">
-                    <a href="{{a.link_to_pay}}"><h4>View Profile</h4></a>
+                    <a href="{% url 'doc-profile' d.pk %}"><h4>Book An Appointment With Me</h4></a>
                     <p class="price"></p>
                     </div>
 
-                    <h3><a href="">Dr. Rosenberg</a></h3>
-                    <p>{% lorem 1 b random %}</p>
+                    <h3><a href="">{{d.name}}</a></h3>
+                    <h6><span><i class="bi bi-hospital mr-2"></i>{{d.hospital}}</span></h6>
+                    <h6><span><i class="bi bi-briefcase mr-2"></i>{{d.area_of_specialization}}</span></h6>
+                    <p>{{d.bio|truncatechars:15}}</p>
                     <div class="trainer d-flex justify-content-between align-items-center">
                     <div class="trainer-profile d-flex align-items-center">
                         {% comment %} <i class="bi bi-person-fill"></i> {% endcomment %}
@@ -34,11 +37,12 @@
                     </div>
                 </div>
                 </div>
-            </div> <!-- End Course Item-->
+            </div> <!-- End Doctor Item-->
+            {% endfor %}
 
         </div>
 
     </div>
-  </section><!-- End Popular Courses Section -->
+  </section><!-- End Doctors Section -->
 
 {% endblock %}

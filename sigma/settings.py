@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure-(renx-y+lvj@_(dmc+uj^paj41o(iy0yw7twn8gg_9xtm_09)+
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'core',
+    'django_summernote'
 ]
 
 MIDDLEWARE = [

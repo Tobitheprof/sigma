@@ -1,0 +1,38 @@
+{% extends 'base2.html' %}
+{% block content %}
+<section id="header">
+    <h3>Learn Something <span>New</span></h3>
+    <p class="lead">Ready to spice up your medical knowledge? Sigma's courses bring you the best from the best, delivering new insights straight from the source!. Select one of these categories to get started</p>
+  </section>
+
+  <section id="popular-courses" class="courses">
+    <div class="" data-aos="fade-up"  data-aos-delay="500">
+        <div class="row" data-aos-delay="100">
+
+            {% for a in course %}
+                <div class="col-lg-4 col-md-6 d-flex align-items-stretch">
+                    <div class="course-item">
+                    <img src="{{a.featured_image.url}}" class="img-fluid" alt="...">
+                    <div class="course-content">
+                        <div class="d-flex justify-content-between align-items-center mb-3">
+                            <h4><a href="#" class="white-text">{{a.category}}</a></h4>
+                        </div>
+                        <h3><a href="/courses/{{a.slug}}">{{a.title}}</a></h3>
+                        <p>{{a.description}}</p>
+                        <a href="/courses/{{a.slug}}" class="btn btn-secondary btn-custom me-2 normal-text mb-3">Get Started</a>
+                        <div class="trainer d-flex justify-content-between align-items-center">
+                        <div class="trainer-profile d-flex align-items-center">
+                            <i class="bi bi-person-fill"></i>
+                            <span>{{a.author}}</span>
+                        </div>
+                        </div>
+                    </div>
+                    </div>
+                </div> <!-- End Course Item-->
+            {% endfor %}
+            
+        </div>
+
+    </div>
+  </section><!-- End Courses Section -->
+{% endblock %}
