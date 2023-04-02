@@ -1,0 +1,38 @@
+{% extends 'base2.html' %}
+{% block content %}
+<section id="header">
+    <h3>Latest <span>News</span></h3>
+    <p class="lead">Get the latest in health news and developement in the world today right now.</p>
+  </section>
+
+  <section id="popular-courses" class="courses">
+    <div class="" data-aos="fade-up"  data-aos-delay="500">
+        <div class="row" data-aos-delay="100">
+
+            {% for a in news %}
+                <div class="col-lg-4 col-md-6">
+                    <div class="course-item">
+                    <img src="{{a.featured_image.url}}" class="img-fluid" alt="...">
+                    <div class="course-content">
+                        {% comment %} <div class="d-flex justify-content-between align-items-center mb-3">
+                            <h4><a href="#" class="white-text">{{a.category}}</a></h4>
+                        </div> {% endcomment %}
+                        <h3><a href="{% url 'latest-det' a.pk %}">{{a.title}}</a></h3>
+                        <p>{{a.body|truncatechars:20}}</p>
+                        <a href="{% url 'latest-det' a.pk %}" class="btn btn-secondary btn-custom me-2 custom-text mb-3">Get Started</a>
+                        <div class="trainer d-flex justify-content-between align-items-center">
+                        <div class="trainer-profile d-flex align-items-center">
+                            <i class="bi bi-person-fill"></i>
+                            <span>Sigma</span>
+                        </div>
+                        </div>
+                    </div>
+                    </div>
+                </div> <!-- End Course Item-->
+            {% endfor %}
+            
+        </div>
+
+    </div>
+  </section><!-- End Courses Section -->
+{% endblock %}

@@ -213,9 +213,24 @@ def hospital_finder(request):
     # the parameters as longitude, latitude,
     # radius and type of place which needs to be searched of 
     # type can be HOSPITAL, CAFE, BAR, CASINO, etc
+    # send_url = f'https://www.googleapis.com/geolocation/v1/geolocate?key={settings.GOOGLE_API_KEY}'
+    # r = requests.get(send_url)
+    # j = json.loads(r.text)
+    # print(j)
+    # lat = j['location']['lat']
+    # lon = j['location']['lng']
+    # print(lat)
+    # print(lon)
+    url = 'https://www.googleapis.com/geolocation/v1/geolocate?key='+API_KEY
+    r = requests.get(url)
+    answer = r.json()
+    lat = answer['location']['lat']
+    lon = answer['location']['lon']
+    print(lat)
+    print(lon)
     query_result = google_places.nearby_search(
             # lat_lng ={'lat': 46.1667, 'lng': -1.15},
-            lat_lng ={'lat': 9.0579, 'lng':  7.4951},
+            lat_lng ={'lat':6.701, 'lng':  7.601},
             radius = 5000,
             # types =[types.TYPE_HOSPITAL] or
             # [types.TYPE_CAFE] or [type.TYPE_BAR]
@@ -258,10 +273,20 @@ def hospital_finder(request):
 
 @login_required
 def latest_news(request):
+    news = LatestNews.objects.filter(publish="yes")
     context = {
-
+        'news' : news
     }
     return render(request, 'latest-news.html', context)
+
+@login_required
+def latest_det(request, pk):
+    latest = LatestNews.objects.get(slug=pk)
+    context = {
+        'latest' : latest
+
+    }
+    return render(request, 'latest-det.html', context)
 
 @login_required
 def profile(request):

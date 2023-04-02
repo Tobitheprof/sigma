@@ -47,10 +47,6 @@ class FirstAid(models.Model):
     def __str__(self):
         return self.title
 
-
-
-
-
 class Doctor(models.Model):
     name = models.CharField(max_length=500, null=True)
     email = models.EmailField(unique=True)
@@ -97,6 +93,17 @@ class Lecture(models.Model):
     description = models.TextField()
     serial_number = models.IntegerField()
     course = models.ForeignKey(Course, on_delete = models.SET_NULL, null=True)
+
+    def __str__(self):
+        return self.title
+    
+
+class LatestNews(models.Model):
+    title = models.CharField(max_length=300)
+    featured_image = models.ImageField(upload_to="blog images")
+    slug = AutoSlugField(populate_from="title", unique=True, editable=False, null=False, primary_key=True, default=None)
+    body = models.TextField()
+    publish = models.CharField(max_length=200, choices=CHOICES)
 
     def __str__(self):
         return self.title

@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'core',
+    'crispy_forms',
     'django_summernote',
     'auth_style',
     'allauth',
@@ -137,7 +138,7 @@ MEDIA_ROOT = os.path.join(BASE_DIR / 'media')
 MEDIA_URL = "/media/"
 
 LOGIN_URL = '/login'
-LOGIN_REDIRECT_URL = '/continue'
+LOGIN_REDIRECT_URL = 'cont'
 
 AUTHENTICATION_BACKENDS = [
     'django.contrib.auth.backends.ModelBackend',

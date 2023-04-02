@@ -10,6 +10,10 @@ class PostAdmin(SummernoteModelAdmin):
 class LectureAdmin(admin.TabularInline):
     model=Lecture
 
+class ProfileAdmin(admin.ModelAdmin):
+    list_display = ['owner', 'nationality', 'address']
+
+
 class CourseAdmin(admin.ModelAdmin):
     inlines = [LectureAdmin]
     list_display = ['title', 'author', 'number_of_lectures'] 
@@ -23,7 +27,7 @@ class CourseAdmin(admin.ModelAdmin):
     def number_of_lectures(self, course):
         return f'{course.number_of_lectures}'
 
-admin.site.register(Profile)
+admin.site.register(Profile, ProfileAdmin)
 admin.site.register(Doctor)
 admin.site.register(FirstAid)
 admin.site.register(Course, CourseAdmin)
