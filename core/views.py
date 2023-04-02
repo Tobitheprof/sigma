@@ -41,7 +41,10 @@ For each bug and feature I either solve or create, I'll drop a dad joke.
 
 @login_required
 def home(request):
-    return render(request, 'home.html')
+    context = {
+        'title' : 'Homepage'
+    }
+    return render(request, 'home.html', context)
 
 @login_required
 def logout(request):
@@ -52,7 +55,8 @@ def logout(request):
 def doctor(request):
     doctor = Doctor.objects.filter(approved="yes")
     context = {
-        'doctor' : doctor
+        'doctor' : doctor,
+        'title' : 'Doctors'
     }
     return render(request, 'doctor.html', context)
 
@@ -60,7 +64,8 @@ def doctor(request):
 def my_appointments(request):
     appointment = Appointment.objects.filter(booker=request.user)
     context = {
-        'appointments' : appointment
+        'appointments' : appointment,
+        'title' : 'My Appointments'
     }
     return render(request, 'my-appointments.html', context)
 
@@ -72,6 +77,7 @@ def doc_profile(request, pk):
     context = {
         'user_profile' : user_profile,
         'user_object' : user_object,
+        'title' : user_object.name
     }
     username = request.user
 
@@ -115,7 +121,10 @@ def doc_profile(request, pk):
 
 @login_required
 def courses(request):
-    return render(request, 'courses.html')
+    context = {
+        'title' : 'Courses'
+    }
+    return render(request, 'courses.html', context)
 
 @login_required
 def self_health(request):
@@ -206,7 +215,8 @@ def first_aid(request):
 def first_det(request, pk):
     first_aid = FirstAid.objects.get(slug=pk)
     context = {
-        'first_aid' : first_aid
+        'first_aid' : first_aid,
+        'title' : 'First Aid'
     }
     return render(request, 'first_detail.html', context)
 
@@ -266,7 +276,8 @@ def hospital_finder(request):
 
 
         context = {
-            'results' : result_list
+            'results' : result_list,
+            'title' : "Hospital Finder"
         }
 
         # print(place)
@@ -282,7 +293,8 @@ def hospital_finder(request):
 def latest_news(request):
     news = LatestNews.objects.filter(publish="yes")
     context = {
-        'news' : news
+        'news' : news,
+        'title' : "Latest News"
     }
     return render(request, 'latest-news.html', context)
 
@@ -290,7 +302,8 @@ def latest_news(request):
 def latest_det(request, pk):
     latest = LatestNews.objects.get(slug=pk)
     context = {
-        'latest' : latest
+        'latest' : latest,
+        'title' : pk
 
     }
     return render(request, 'latest-det.html', context)
@@ -327,7 +340,8 @@ def profile(request):
         return redirect("home")
     
     context = {
-    'user_profile' : user_profile
+    'user_profile' : user_profile,
+    'title' : "Edit Profile"
     }   
     
     return render(request, 'profile.html', context)
