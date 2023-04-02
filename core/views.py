@@ -11,6 +11,8 @@ from googleplaces import GooglePlaces, types, lang
 import requests
 import json
 from sigma import settings
+import ipinfo
+
 """
 Hello there, I'm Tobi, 17 year old full stack developer and data scientist. I'm also a freshman at a university, chasing a degree in engineering and I am author of Sigma and team lead for the Sigma project. This code here represents the main logic of Sigma, and it's what's responsible for the workings and architecture of Sigma. 
 
@@ -203,6 +205,11 @@ def first_det(request, pk):
 
 @login_required
 def hospital_finder(request):
+    access_token = settings.IP_ACCESS_TOKEN
+    handler = ipinfo.getHandler(access_token)
+    details = handler.getDetails()
+    lat = details.latitude
+    lon = details.longitude
     # Use your own API key for making api request calls
     API_KEY = settings.GOOGLE_API_KEY
     
@@ -221,17 +228,10 @@ def hospital_finder(request):
     # lon = j['location']['lng']
     # print(lat)
     # print(lon)
-    url = 'https://www.googleapis.com/geolocation/v1/geolocate?key='+API_KEY
-    r = requests.get(url)
-    answer = r.json()
-    lat = answer['location']['lat']
-    lon = answer['location']['lon']
-    print(lat)
-    print(lon)
     query_result = google_places.nearby_search(
             # lat_lng ={'lat': 46.1667, 'lng': -1.15},
-            lat_lng ={'lat':6.701, 'lng':  7.601},
-            radius = 5000,
+            lat_lng ={'lat':lat, 'lng':lon},
+            radius = 50000,
             # types =[types.TYPE_HOSPITAL] or
             # [types.TYPE_CAFE] or [type.TYPE_BAR]
             # or [type.TYPE_CASINO])
@@ -333,6 +333,18 @@ def cont(request):
         user_model = User.objects.get(username=request.user)
         new_profile = Profile.objects.create(owner=user_model, id_user=user_model.id)
         new_profile.save()
+        ctx = {
+            'user' : user_model.username
+        }
+        message = get_template('mail.html').render(ctx)
+        msg = EmailMessage(
+            'Welcome to Sigma',
+            message,
+            'Paradoxx',
+            [user_model.email],
+        )
+        msg.content_subtype ="html"# Main content is now text/html
+        msg.send()
     return render(request, 'next.html')
 
 # -------------- Auth Views End --------- #
