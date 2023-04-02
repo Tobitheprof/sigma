@@ -35,7 +35,7 @@ class Profile(models.Model):
     about_me = models.TextField()
 
     def __str__(self):
-        return self.owner.username
+        return self.phone_number
     
 class FirstAid(models.Model):
     title = models.CharField(max_length=400)
