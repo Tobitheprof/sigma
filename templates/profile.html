@@ -1,24 +1,26 @@
 {% extends 'base2.html' %}
 {% load static %}
+{% block css %}
+<link rel="stylesheet" href="{% static 'assets/css/forms.css' %}">
+{% endblock %}
 {% block content %}
 <section id="edit-profile">
-    <div class="container-lg">
-        <div class="text-start-lg text-start-md text-start-sm">
-            <h4>Personal & Contact Information</h4>
-            <p class="lead">Here, you can update or change any of your personal & contact information</p>
-            <div class="border-bottom"></div>
-        </div>
+    <div class="">
+      <div class="text-start-lg">
+        <h3>Profile and <span>Settings</span></h3>
+        <p class="lead">Here, you can update your personal information and medical information as well. Make sure that the information you provide here is authentic and up-to-date</p>
+      </div>
         <div class="row row-cols-1 row-cols-md-2 g-4">
             <!--For Loop Start-->
             <div class="col">
-              <form method="POST" enctype="multipart/form-data">
+              <form method="POST">
                 {% csrf_token %}
                 <div class="row g-3">
                     <div class="col-sm-6">
                       <label for="firstName" class="form-label">First Name:</label>
                       <div class="input-group has-validation">
                         <span class="input-group-text"><i class="bi bi-person"></i></span>
-                        <input type="text" class="form-control" id="username" placeholder="First Name" required disabled value="{{user.first_name}}"> 
+                        <input type="text" class="form-control" id="username" value="{{user.first_name}}" required disabled > 
                       </div>                        
                     </div>
         
@@ -27,14 +29,6 @@
                       <div class="input-group has-validation">
                         <span class="input-group-text"><i class="bi bi-person-fill"></i></span>
                         <input type="text" class="form-control" id="username" placeholder="Last Name" required disabled value="{{user.last_name}}">
-                      </div>                        
-                    </div>
-
-                    <div class="col-12 mb-3">
-                      <label for="lastName" class="form-label">Occupation:</label>
-                      <div class="input-group has-validation">
-                        <span class="input-group-text"><i class="bi bi-briefcase"></i></span>
-                        <input type="text" class="form-control" id="username" placeholder="Occupation" required value="{{user_profile.occupation}}" name="occupation">
                       </div>                        
                     </div>
         
@@ -50,7 +44,7 @@
                         <label for="username" class="form-label">Nationality:</label>
                         <div class="input-group">
                           <span class="input-group-text"><i class="bi bi-flag"></i></span>
-                          <input type="text" class="form-control" id="username" placeholder="Address" required name="nationality" value="{{user_profile.nationality}}">
+                          <input type="text" class="form-control" id="username" placeholder="E.g. Japanese, Polish, Hungarian" required name="nationality" value="{{user_profile.nationality}}">
                         </div>
                     </div>
 
@@ -66,21 +60,63 @@
                       <label for="username" class="form-label">Phone Number:</label>
                       <div class="input-group">
                         <span class="input-group-text"><i class="bi bi-telephone"></i></span>
-                        <input type="number" class="form-control" id="username" placeholder="Phone Number" name="phone" value="{{user_profile.phone_number}}" required>
+                        <input type="text" class="form-control" id="username" placeholder="Phone Number" name="phone_number" value="{{user_profile.phone_number}}" required>
                       </div>
                     </div>
 
                     <div class="col-12 mb-3">
-                      <label for="desc" class="form-label">About Me:</label>
-                      <textarea name="desc" id="desc" cols="30" rows="30" placeholder="Write Something About Yourself" class="form-control" required>{{user_profile.about_me}}</textarea>
+                      <label for="username" class="form-label">Allergies:</label>
+                      <div class="input-group">
+                        <span class="input-group-text"><i class="bi bi-flower2"></i></span>
+                        <input type="text" class="form-control" id="username" placeholder="E.g. Cats, Dogs, Hamsters, Excessive Heat, Bees and so on" name="allergies" value="{{user_profile.allergies}}" required>
+                      </div>
                     </div>
 
                     <div class="col-12 mb-3">
-                      <label for="desc" class="form-label">Why did you join ABUDevs?</label>
-                      <textarea name="join_reason" id="desc" cols="30" rows="30" placeholder="Write Something About Yourself" class="form-control" required>{{user_profile.join_reason}}</textarea>
+                      <label for="username" class="form-label">Medical Conditions:</label>
+                      <div class="input-group">
+                        <span class="input-group-text"><i class="bi bi-patch-plus-fill"></i></span>
+                        <input type="text" class="form-control" id="username" placeholder="Conditions like Diabetis, Cancer, Ebola and other illnesses" name="conditions" value="{{user_profile.medical_conditions}}" required>
+                      </div>
+                    </div>
+
+                    <div class="col-12 mb-3">
+                      <label for="username" class="form-label">Genotype:</label>
+                      <div class="input-group">
+                        <span class="input-group-text"><i class="bi bi-droplet-half"></i></span>
+                        <input type="text" class="form-control" id="username" placeholder="E.g. AA, AS, SS" name="genotype" value="{{user_profile.genotype}}" required>
+                      </div>
+                    </div>
+
+                    <div class="col-12 mb-3">
+                      <label for="username" class="form-label">Blood Group:</label>
+                      <div class="input-group">
+                        <span class="input-group-text"><i class="bi bi-droplet-fill"></i></span>
+                        <input type="text" class="form-control" id="username" placeholder="E.g. O+, O-, A+, AB-" name="blood_group" value="{{user_profile.blood_group}}" required>
+                      </div>
+                    </div>
+
+                    <div class="col-12 mb-3">
+                      <label for="desc" class="form-label">How did you hear about us?</label>
+                      <textarea name="how" id="desc" cols="15" rows="10" placeholder="how did you come across Sigma?" class="form-control" required>{{user_profile.how}}</textarea>
+                    </div>
+
+                    <div class="col-12 mb-3">
+                      <label for="desc" class="form-label">Medical History:</label>
+                      <textarea name="medical_history" id="desc" cols="15" rows="10" placeholder="Summarize your medical history here, talk about things like illnesses you've had, daily routines and things in relation to that" class="form-control" required>{{user_profile.medical_history}}</textarea>
+                    </div>
+
+                    <div class="col-12 mb-3">
+                      <label for="desc" class="form-label">About Me:</label>
+                      <textarea name="about_me" id="desc" cols="15" rows="10" placeholder="Write Something About Yourself" class="form-control" required>{{user_profile.about_me}}</textarea>
+                    </div>
+
+                    <div class="col-12 mb-3">
+                      <label for="desc" class="form-label">Why did you join <span>Sigma</span>?</label>
+                      <textarea name="join_reason" id="desc" cols="15" rows="10" placeholder="E.g. I Joined Sigma becasue I wanted easy access to medical services" class="form-control" required>{{user_profile.join_reason}}</textarea>
                     </div>
                     
-                    <button class="btn btn-secondary btn-custom me-2 normal-text" type="submit">Update Profile</button>
+                    <button class="btn btn-custom me-2 custom-text" type="submit">Update Profile</button>
                     
 
                 </div>

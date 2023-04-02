@@ -25,5 +25,6 @@ class CourseAdmin(admin.ModelAdmin):
 
 admin.site.register(Profile)
 admin.site.register(Doctor)
-admin.site.register(FirstAid, PostAdmin)
+admin.site.register(FirstAid)
 admin.site.register(Course, CourseAdmin)
+admin.site.register(Appointment)

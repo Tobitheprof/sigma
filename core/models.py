@@ -20,23 +20,26 @@ CATEGORIES = (
 
 
 class Profile(models.Model):
-	owner = models.ForeignKey(User, on_delete=models.SET_NULL, null=True)
-	id_user = models.IntegerField(null=True)
-	phone_number = models.CharField(null=True, max_length=300)
-	how_did_you_hear_about_us = models.TextField(null=True)
-	what_will_you_use_sigma_for = models.TextField(null=True)
-	allergies = models.TextField(null=True)
-	blood_group = models.CharField(max_length=300, null=True)
-	genotype = models.CharField(max_length=300, null=True)
-	medical_conditions = models.CharField(max_length=300, null=True)
+    owner = models.ForeignKey(User, on_delete=models.SET_NULL, null=True)
+    id_user = models.IntegerField(null=True)
+    phone_number = models.CharField(max_length=300)
+    how_did_you_hear_about_us = models.TextField()
+    what_will_you_use_sigma_for = models.TextField()
+    allergies = models.CharField(max_length=400)
+    blood_group = models.CharField(max_length=300)
+    genotype = models.CharField(max_length=300)
+    medical_conditions = models.CharField(max_length=400)
+    address = models.CharField(max_length=400)
+    nationality = models.CharField(max_length=300)
+    medical_history = models.TextField()
+    about_me = models.TextField()
 
-	def __str__(self):
-		return self.owner.username
-
-
+    def __str__(self):
+        return self.owner.username
+    
 class FirstAid(models.Model):
     title = models.CharField(max_length=400)
-    slug = AutoSlugField(populate_from="title", editable=False, primary_key=True, default=None)
+    slug = AutoSlugField(populate_from="title", editable=False, primary_key=True)
     date_published = models.DateField(auto_now_add=True)
     featured_image = models.ImageField(upload_to="First Aid")
     body = models.TextField()
@@ -46,16 +49,17 @@ class FirstAid(models.Model):
 
 
 
-    
+
+
 class Doctor(models.Model):
-    name = models.CharField(max_length=300, null=True)
+    name = models.CharField(max_length=500, null=True)
     email = models.EmailField(unique=True)
-    phone_number = models.CharField(max_length=300, null=False, primary_key=True)
+    phone_number = models.CharField(max_length=300, primary_key=True, unique=True)
     picture = models.ImageField(upload_to="Images")
-    hospital = models.CharField(max_length=300, null=True)
-    bio = models.TextField(max_length=500, null=True)
-    area_of_specialization = models.CharField(max_length=300, null=True)
-    approved = models.CharField(null=True, choices=CHOICES, max_length=250)
+    hospital = models.CharField(max_length=300, )
+    bio = models.TextField(max_length=500, )
+    area_of_specialization = models.CharField(max_length=300, )
+    approved = models.CharField(choices=CHOICES, max_length=250)
 
 
     def __str__(self):
@@ -63,9 +67,12 @@ class Doctor(models.Model):
 
 
 class Appointment(models.Model):
-    booker = models.ForeignKey(User, on_delete=models.SET_NULL, null=True)
+    booker = models.ForeignKey(User, on_delete=models.CASCADE, null=True)
     first_name = models.CharField(max_length=300)
+    doctor = models.ForeignKey(Doctor, on_delete=models.SET_NULL, null=True)
     last_name = models.CharField(max_length=300)
+    date_booked = models.DateField(auto_now_add=True, )
+    subject = models.CharField(max_length=150)
     email_address = models.EmailField()
     message = models.TextField()
 
@@ -78,7 +85,7 @@ class Course(models.Model):
     featured_image = models.ImageField(upload_to="Course Images")
     author = models.CharField(max_length=100)
     number_of_lectures = models.CharField(max_length=300)
-    category = models.CharField(max_length=300, null=True, choices=CATEGORIES)
+    category = models.CharField(max_length=300, choices=CATEGORIES)
     description = models.TextField()
 
     def __str__(self):
@@ -86,10 +93,10 @@ class Course(models.Model):
 
 class Lecture(models.Model):
     title = models.CharField(max_length=300)
-    video_link = models.CharField(max_length=900,null=False)
-    description = models.TextField(null=True)
-    serial_number = models.IntegerField(null=True)
-    course = models.ForeignKey(Course, on_delete = models.CASCADE, null=False)
+    video_link = models.CharField(max_length=900)
+    description = models.TextField()
+    serial_number = models.IntegerField()
+    course = models.ForeignKey(Course, on_delete = models.SET_NULL, null=True)
 
     def __str__(self):
         return self.title

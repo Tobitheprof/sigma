@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% block content %}
+{% load static %}
+<section id="login" class="form">
+    <div class="container vh-45" style="margin-top:70px">
+        <div class="" style="margin-top:50px">
+            <div class="rounded d-flex justify-content-center">
+                <div class="col-md-4 col-sm-12 shadow-lg p-5">
+                    <div class="text-center">
+                        <img src="{% static 'assets/img/logo.png' %}" alt="" width="70" height="70" class="mb-3">
+                    </div>
+                    <div class="text-start ms-3 mt-3">
+                        <p class="fw-bold lead" style="color: #3f3e3e !important;">Okay, let's continue the process, click on the button below to update our personal and medical information</p>
+                        <a class="btn btn-secondary text-center mt-3 btn-custom mb-3 shadow p-2" href="{% url 'profile' %}">
+                            Login
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

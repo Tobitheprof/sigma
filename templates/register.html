@@ -1,6 +1,7 @@
-    {% extends 'base.html' %}
-    {% load static %}
-    {% block content %}
+{% extends 'base.html' %}
+{% load static %}
+{% load socialaccount %}
+{% block content %}
     {% block css %}
     <link rel="stylesheet" href="{% static 'assets/css/forms.css' %}">
     {% endblock %}
@@ -35,7 +36,7 @@
 
 
                                 <button class="btn btn-secondary text-center mt-3 btn-custom mb-3 btn-xl shadow p-2" type="submit">
-                                    Login
+                                    Sign Up
                                 </button>
 
                                 <div class="text-center"><p class="text-muted">- Or Login With -</p></div>
@@ -43,14 +44,14 @@
                                     <div class="col">
                                         <div class="box">
                                             <div class="">
-                                                <p class="text-center"><a href="#"><i class="bi bi-google" style="font-size: larger; font-weight: bolder;"></i></a></p>
+                                                <p class="text-center"><a href="{% provider_login_url 'google' %}"><i class="bi bi-google" style="font-size: larger; font-weight: bolder;"></i></a></p>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
 
-                                <p class="text-center mt-4">Don't have an account?
-                                    <a href="#" style="text-decoration: none;"><span class="green-text">Sign Up</span></a>
+                                <p class="text-center mt-4">Already Have an Account?
+                                    <a href="{% url 'login' %}" style="text-decoration: none;"><span class="green-text">Login</span></a>
                                 </p>
                                 <a href="#" style="text-decoration: none;"><p class="text-center">Forgot your password?</p></a>
                             </div>
@@ -61,4 +62,4 @@
         </div>
     </section>
     <!--Login end-->
-    {% endblock %}
+{% endblock %}

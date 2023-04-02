@@ -1,4 +1,5 @@
     {% extends 'base.html' %}
+    {% load socialaccount %}
     {% load static %}
     {% block css %}
     <link rel="stylesheet" href={% static 'assets/css/forms.css' %}>
@@ -40,14 +41,14 @@
                                     <div class="col">
                                         <div class="box">
                                             <div class="">
-                                               <p class="text-center"><a href="#"><i class="bi bi-google" style="font-size: larger; font-weight: bolder;"></i></a></p>
+                                               <p class="text-center"><a href="{% provider_login_url 'google' %}"><i class="bi bi-google" style="font-size: larger; font-weight: bolder;"></i></a></p>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
 
                                 <p class="text-center mt-4">Don't have an account?
-                                    <a href="#" style="text-decoration: none;"><span class="green-text">Sign Up</span></a>
+                                    <a href="{% url 'register' %}" style="text-decoration: none;"><span class="green-text">Sign Up</span></a>
                                 </p>
                                 <a href="#" style="text-decoration: none;"><p class="text-center">Forgot your password?</p></a>
                             </div>

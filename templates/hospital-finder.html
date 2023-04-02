@@ -1,0 +1,47 @@
+{% extends 'base2.html' %}
+{% load static %}
+{% block content %}
+<section id="header">
+    <h3>Find a <span>Hsopital</span></h3>
+    <p class="lead">Don't let unfamiliar territory leave you stranded in a health crisis! Sigma's got your back with our Hospital Finder. Locate top-notch medical facilities in your vicinity with ease, so you can get the care you need, when you need it!</p>
+  </section>
+
+  <section id="popular-courses" class="courses">
+    <div class="" data-aos="fade-up"  data-aos-delay="500">
+        <div class="row" data-aos-delay="100">
+
+            {% for d in results %}
+            <div class="col-lg-4 col-md-6 mb-3">
+                <div class="course-item">
+                    <iframe style="border:0; width: 100%; height: 350px;" src="https://maps.google.com/maps?q={{d.lat}},{{d.lng}}&en=es&z=14&amp;output=embed" frameborder="0" allowfullscreen></iframe>
+                    <div class="course-content">
+                    <div class="d-flex justify-content-between align-items-center mb-3">
+                    <a href="https://maps.google.com/maps?q={{d.lat}},{{d.lng}}&en=es&z=14&amp;"><h4>Get Directions</h4></a>
+                    <p class="price"></p>
+                    </div>
+
+                    <h3><a href="">{{d.place}}</a></h3>
+                    <h6><span><i class="bi bi-hospital mr-2"></i>{{d.vicinity}}</span></h6>
+                    <h6><span><i class="bi bi-phone mr-2"></i>{{d.phone_number}}</span></h6>
+                    <div class="trainer d-flex justify-content-between align-items-center">
+                    <div class="trainer-profile d-flex align-items-center">
+                        {% comment %} <i class="bi bi-person-fill"></i> {% endcomment %}
+                        <span>Sigma</span>
+                    </div>
+                    <!-- <div class="trainer-rank d-flex align-items-center">
+                        <i class="bx bx-user"></i>&nbsp;50
+                        &nbsp;&nbsp;
+                        <i class="bx bx-heart"></i>&nbsp;65
+                    </div> -->
+                    </div>
+                </div>
+                </div>
+            </div> <!-- End Doctor Item-->
+            {% endfor %}
+
+        </div>
+
+    </div>
+  </section><!-- End Doctors Section -->
+
+{% endblock %}

@@ -9,6 +9,12 @@ urlpatterns = [
     path('appointment', views.appointment, name="appointment"),
     path('doctor', views.doctor, name="doctor"),
     path('doctor/profile/<str:pk>', views.doc_profile, name="doc-profile"),
+    path('first-aid', views.first_aid, name="first-aid"),
+    path('first-aid/<str:pk>', views.first_det, name="first-det"),
+    path('appointments', views.my_appointments, name="my-appointments"),
+    path('latest-health-news', views.latest_news, name="latest-news"),
+    path('hospital-finder', views.hospital_finder, name="hospital-finder"),
+    path('continue', views.cont, name="cont"),
 
     # ------------- Courses Views ---------- #
     path('courses', views.courses, name="courses"),
@@ -19,8 +25,6 @@ urlpatterns = [
     path('courses/dental-health', views.dental_health, name="dental-health"),
     path('courses/physical-fitness-and-exercise', views.physical_fitness_and_exercise, name="physical-fitness-and-exercise"),
     path('courses/<str:slug>/', views.det, name="det"),
-
-
     # -------------- Courses Views End ------- #
     
     

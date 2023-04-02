@@ -1,25 +1,26 @@
 {% extends 'base2.html' %}
 {% block content %}
 <section id="header">
-    <h3>First <span>Aid</span></h3>
-    <p class="lead">Be the hero in an emergency with Sigma's comprehensive First Aid training! Whether you're a seasoned pro or a novice responder, our user-friendly resources teach you how to administer life-saving techniques with ease. Don't wait for help to arrive, be the help with Sigma's First Aid training, explained in the simplest way possible!</p>
+    <h3>My <span>Appointments</span></h3>
+    <p class="lead">Here, you can see all of the appointments that you have booked in the past as well the details of the appointment</p>
   </section>
 
   <section id="popular-courses" class="courses">
     <div class="" data-aos="fade-up"  data-aos-delay="500">
         <div class="row" data-aos-delay="100">
-
-            {% for a in first_aid %}
+            {% for a in appointments %}
                 <div class="col-lg-4 col-md-6 d-flex align-items-stretch">
                     <div class="course-item">
-                    <img src="{{a.featured_image.url}}" class="img-fluid" alt="...">
                     <div class="course-content">
                         {% comment %} <div class="d-flex justify-content-between align-items-center mb-3">
                             <h4><a href="#" class="white-text">{{a.category}}</a></h4>
                         </div> {% endcomment %}
-                        <h3><a href="{% url 'first-det' a.pk %}">{{a.title}}</a></h3>
-                        <p>{{a.body|truncatechars:20}}</p>
-                        <a href="{% url 'first-det' a.pk %}" class="btn btn-secondary btn-custom me-2 custom-text mb-3">Get Started</a>
+                        {% comment %} <h3><a href="{% url 'first-det' a.pk %}">{{a.title}}</a></h3> {% endcomment %}
+                        <p>{{a.subject}}</p>
+                        <p>{{a.message}}</p>
+                        <P>{{a.date_booked}}</p>
+                        <p>Dr. {{a.doctor}}</p>
+                        {% comment %} <a href="{% url 'first-det' a.pk %}" class="btn btn-secondary btn-custom me-2 custom-text mb-3">Get Started</a> {% endcomment %}
                         <div class="trainer d-flex justify-content-between align-items-center">
                         <div class="trainer-profile d-flex align-items-center">
                             <i class="bi bi-person-fill"></i>
@@ -30,9 +31,7 @@
                     </div>
                 </div> <!-- End Course Item-->
             {% endfor %}
-            
         </div>
-
     </div>
   </section><!-- End Courses Section -->
 {% endblock %}

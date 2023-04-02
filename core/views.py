@@ -7,8 +7,10 @@ from django.core.mail import EmailMessage
 from django.contrib.auth.decorators import *
 from django.core.paginator import *
 from django.db.models import Q
-
-
+from googleplaces import GooglePlaces, types, lang
+import requests
+import json
+from sigma import settings
 """
 Hello there, I'm Tobi, 17 year old full stack developer and data scientist. I'm also a freshman at a university, chasing a degree in engineering and I am author of Sigma and team lead for the Sigma project. This code here represents the main logic of Sigma, and it's what's responsible for the workings and architecture of Sigma. 
 
@@ -22,14 +24,19 @@ For each bug and feature I either solve or create, I'll drop a dad joke.
 2. Why are educated so hot???
     Cause they have more degress(Fixed mailing list bugs)
 
-3. 
+3. Why did the programmer need new glasses?
+    Becaue he couldn't C# *ba dum tsss (Fixed Looping Issue With Maps API)
+
+4. Why was 6 afraid of 7?
+    Because 7, 8, 9(Fixed styling issue with maps)
+
+5. What do you call a cow with no legs?
+    Ground BEEF!!!!!!
 """
 
-
-
-
-
 # -------------- Auth Views ------------ #
+
+
 @login_required
 def home(request):
     return render(request, 'home.html')
@@ -39,9 +46,7 @@ def logout(request):
     auth.logout(request)
     return redirect('login')
 
-@login_required
-def profile(request):
-    return redirect(request, 'profile.html')
+
 
 @login_required
 def appointment(request):
@@ -56,29 +61,37 @@ def doctor(request):
     return render(request, 'doctor.html', context)
 
 @login_required
+def my_appointments(request):
+    appointment = Appointment.objects.filter(booker=request.user)
+    context = {
+        'appointments' : appointment
+    }
+    return render(request, 'my-appointments.html', context)
+
+@login_required
 def doc_profile(request, pk):
-    user_profile = Profile.objects.get_or_create(owner=request.user)
+    user_profile = Profile.objects.get(owner=request.user)
     user_object= Doctor.objects.get(phone_number=pk)
+    doctor = user_object.name
     context = {
         'user_profile' : user_profile,
         'user_object' : user_object,
     }
     username = request.user
 
-
-
-
     if request.method == "POST":
         first_name = request.POST['first_name']
         last_name = request.POST['last_name']
         email_address = request.POST['email']
         message = request.POST['message']
+        subject = request.POST['subject']
         ctx = {
             'user' : username,
             'email' : email_address,
             'message' : message,
             'first_name' : first_name,
             'last_name' : last_name,
+            'subject' : subject
         }
         message = get_template('appoint_mail.html').render(ctx)
         msg = EmailMessage(
@@ -90,7 +103,7 @@ def doc_profile(request, pk):
         msg.content_subtype ="html"# Main content is now text/html
         msg.send()
         messages.info(request, 'Your appointment has been booked successfully, the appointed doctor will send you a message in regards to booking time as soon as possible.')
-        Appointment.objects.create(booker=request.user, first_name=first_name, last_name=last_name, email_address=email_address, message=message)
+        Appointment.objects.create(booker=request.user, first_name=first_name, last_name=last_name, email_address=email_address, message=message, doctor=Doctor.objects.get(name=user_object.name))
     
     return render(request, 'doctor-profile.html', context)
 
@@ -170,7 +183,7 @@ def det(request, slug):
 
 @login_required
 def first_aid(request):
-    first_aid = FirstAid.objects.filter(approved="yes")
+    first_aid = FirstAid.objects.all()
     context = {
         'first_aid' : first_aid
     }
@@ -183,7 +196,120 @@ def first_det(request, pk):
         'first_aid' : first_aid
     }
     return render(request, 'first_detail.html', context)
+
+@login_required
+def hospital_finder(request):
+    # Use your own API key for making api request calls
+    API_KEY = settings.GOOGLE_API_KEY
+    
+    # Initialising the GooglePlaces constructor
+    google_places = GooglePlaces(API_KEY)
+    
+    # call the function nearby search with
+    # the parameters as longitude, latitude,
+    # radius and type of place which needs to be searched of 
+    # type can be HOSPITAL, CAFE, BAR, CASINO, etc
+    query_result = google_places.nearby_search(
+            # lat_lng ={'lat': 46.1667, 'lng': -1.15},
+            lat_lng ={'lat': 9.0579, 'lng':  7.4951},
+            radius = 5000,
+            # types =[types.TYPE_HOSPITAL] or
+            # [types.TYPE_CAFE] or [type.TYPE_BAR]
+            # or [type.TYPE_CASINO])
+            types =[types.TYPE_HOSPITAL])
+    
+    # If any attributions related 
+    # with search results print them
+    if query_result.has_attributions:
+        print (query_result.html_attributions)
+    
+    
+    # Iterate over the search results
+    result_list = []
+    for place in query_result.places:
+        result_dict = {
+            'h' :place.get_details(),
+            'place' : place.name,
+            'dets' :  place.get_details(),
+            'lat' : place.geo_location['lat'],
+            'lng' : place.geo_location['lng'],
+            'phone_number' : place.local_phone_number,
+            'vicinity' : place.vicinity,
+        }
+        result_list.append(result_dict)
+
+
+        context = {
+            'results' : result_list
+        }
+
+        # print(place)
+        # place.get_details()
+        # print (place.name)
+        # print("Latitude", place.geo_location['lat'])
+        # print("Longitude", place.geo_location['lng'])
+        # print(place.local_phone_number)
+        # print()
+    return render(request, 'hospital-finder.html', context)
+
+@login_required
+def latest_news(request):
+    context = {
+
+    }
+    return render(request, 'latest-news.html', context)
+
+@login_required
+def profile(request):
+    user_profile = Profile.objects.get(owner=request.user)
+    if request.method == "POST":
+        phone_number = request.POST['phone_number']
+        blood_group = request.POST['blood_group']
+        allergies = request.POST['allergies']
+        address = request.POST['address']
+        nationality = request.POST['nationality']
+        medical_history = request.POST['medical_history']
+        about_me = request.POST['about_me']
+        how_did_you_hear_about_us = request.POST['how']
+        what_will_you_use_sigma_for = request.POST['join_reason']
+        medical_conditions = request.POST['conditions']
+        genotype = request.POST['genotype']
+
+
+        user_profile.phone_number = phone_number
+        user_profile.blood_group = blood_group
+        user_profile.allergies = allergies
+        user_profile.address = address
+        user_profile.nationality = nationality
+        user_profile.medical_history = medical_history
+        user_profile.about_me = about_me
+        user_profile.how_did_you_hear_about_us = how_did_you_hear_about_us
+        user_profile.what_will_you_use_sigma_for = what_will_you_use_sigma_for
+        user_profile.medical_conditions = medical_conditions
+        user_profile.genotype = genotype
+        user_profile.save()
+        return redirect("home")
+    
+    context = {
+    'user_profile' : user_profile
+    }   
+    
+    return render(request, 'profile.html', context)
+
+@login_required
+def cont(request):
+    if Profile.objects.filter(owner=request.user).exists():
+        return redirect("home")
+    else:
+        user_model = User.objects.get(username=request.user)
+        new_profile = Profile.objects.create(owner=user_model, id_user=user_model.id)
+        new_profile.save()
+    return render(request, 'next.html')
+
 # -------------- Auth Views End --------- #
+
+
+
 
 # ----------- No Auth Views ------------ #
 def index(request):
@@ -263,10 +389,7 @@ def register(request):
 
 
             #Create user model and redirect to edit-profile
-            user_model = User.objects.get(username=username)
-            new_profile = Profile.objects.create(owner=user_model, id_user=user_model.id)
-            new_profile.save()
-            return redirect('edit-profile')#Rediects to specified page once condition is met
+            return redirect('cont')#Rediects to specified page once condition is met
         else:
             messages.info(request, "Passwords do not match")
             return redirect("register")
