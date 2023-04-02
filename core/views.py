@@ -121,7 +121,9 @@ def courses(request):
 def self_health(request):
     courses = Course.objects.filter(category="Self Health")
     context = {
-        'course' : courses
+        'course' : courses,
+        'title' : 'Self Care',
+
     }
     return render(request, 'category.html', context)
 
@@ -129,7 +131,8 @@ def self_health(request):
 def mental_health(request):
     courses = Course.objects.filter(category="Mental Health")
     context = {
-        'course' : courses
+        'course' : courses,
+        'title' : 'Mental Health'
     }
     return render(request, 'category.html', context)
 
@@ -137,7 +140,8 @@ def mental_health(request):
 def care_giving(request):
     courses = Course.objects.filter(category="Care Givnig")
     context = {
-        'course' : courses
+        'course' : courses,
+        'title' : 'Care Giving'
     }
     return render(request, 'category.html', context)
 
@@ -145,7 +149,8 @@ def care_giving(request):
 def psycology(request):
     courses = Course.objects.filter(category="Psycology")
     context = {
-        'course' : courses
+        'course' : courses,
+        'title' : 'Psycology'
     }
     return render(request, 'category.html', context)
 
@@ -153,7 +158,8 @@ def psycology(request):
 def dental_health(request):
     courses = Course.objects.filter(category="Dental Health")
     context = {
-        'course' : courses
+        'course' : courses,
+        'title' : 'Dental Health',
     }
     return render(request, 'category.html', context)
 
@@ -161,7 +167,8 @@ def dental_health(request):
 def physical_fitness_and_exercise(request):
     courses = Course.objects.filter(category="Physical Fitness and Exercise")
     context = {
-        'course' : courses
+        'course' : courses,
+        'title' : 'Physical Fitness and Exercise'
     }
     return render(request, 'category.html', context)
 
