@@ -46,12 +46,6 @@ def logout(request):
     auth.logout(request)
     return redirect('login')
 
-
-
-@login_required
-def appointment(request):
-    return render(request, 'appointment.html')
-
 @login_required
 def doctor(request):
     doctor = Doctor.objects.filter(approved="yes")
@@ -93,10 +87,20 @@ def doc_profile(request, pk):
             'last_name' : last_name,
             'subject' : subject
         }
-        message = get_template('appoint_mail.html').render(ctx)
+        # message = get_template('appoint_mail.html').render(ctx)
         msg = EmailMessage(
             'Appointment Booking',
-            message,
+            f'''Hello there {user_object.name}, you have been booked for an appointment by {user_profile.owner} on Sigma. 
+            Here is an overview of the person who booked the appointment.
+            Email Address:
+            {email_address}
+            First Name:
+            {first_name}
+            Last Name:
+            {last_name}
+            Message:
+            {message}
+            ''',
             'Sigma',
             [user_object.email],
         )
