@@ -223,8 +223,13 @@ def first_det(request, pk):
 @login_required
 def hospital_finder(request):
     access_token = settings.IP_ACCESS_TOKEN
+    user_ip = request.META.get('HTTP_X_FORWARDED_FOR')
+    if user_ip:
+        ip = user_ip.split(',')[0]
+    else:
+        ip = request.META.get('REMOTE_ADDR')
     handler = ipinfo.getHandler(access_token)
-    details = handler.getDetails()
+    details = handler.getDetails(ip)
     lat = details.latitude
     lon = details.longitude
     # Use your own API key for making api request calls
