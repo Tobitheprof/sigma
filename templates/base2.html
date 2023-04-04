@@ -9,7 +9,6 @@
     <link rel="shortcut icon" href="{% static 'assets/img/logo.png' %}" type="image/x-icon">
 	<link rel="stylesheet" href="{% static 'assets/vendor/bootstrap-icons-1.10.3/bootstrap-icons.css' %}">
     <link rel="stylesheet" href="{% static 'assets/vendor/aos/aos.css' %}">
-	{% block css %}{% endblock %}
     <title>Sigma | {{title}}</title>
     <style>
         section{
@@ -19,6 +18,7 @@
 	<link rel="stylesheet" href="{% static 'assets/css/style.css' %}">
     <link rel="stylesheet" href="{% static 'assets/css/styles.css' %}">
     <link rel="stylesheet" href="{% static 'assets/css/home.css' %}">
+	{% block css %}{% endblock %}
 	<link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800,900" rel="stylesheet">
   </head>
   <body>
